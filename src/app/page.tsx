@@ -188,9 +188,6 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
               <h2 className="text-3xl font-bold font-headline text-primary">
                 Development Areas
               </h2>
-              <p className="mt-2 text-muted-foreground">
-                Tips to help you grow in each of the four career fitness traits.
-              </p>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {(Object.keys(results.profile.developmentAreas) as Trait[]).map((trait) => {
