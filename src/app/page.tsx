@@ -308,7 +308,7 @@ export default function CareerFitnessQuiz() {
             CAREER FITNESS PROFILING QUIZ
           </div>
 
-          <div className="bg-card text-card-foreground text-center rounded-lg border border-primary/30 px-8 py-3 shadow-sm text-foreground/90 text-base">
+          <div className="bg-card text-card-foreground text-center rounded-lg border border-primary/30 px-8 py-3 shadow-sm text-foreground/90 text-sm">
             Discover your unique career strengths and create a personalized development plan
           </div>
 
@@ -393,7 +393,7 @@ export default function CareerFitnessQuiz() {
     return (
       <main className="min-h-screen bg-background flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
         <div className="w-full max-w-2xl mx-auto space-y-8">
-          <Card className="border-primary/30">
+          <Card className="border-2 border-primary">
             <CardContent className="p-6 flex items-start gap-4">
               <Info className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -411,11 +411,11 @@ export default function CareerFitnessQuiz() {
                 SCOREBOARD
               </div>
             </div>
-            <Card className="border-primary/30 pt-10">
+            <Card className="border-2 border-primary pt-10">
               <CardContent className="p-6 space-y-4">
                 {scoreboardItems.map((item) => (
                   <div key={item.number} className="flex items-center gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-md flex items-center justify-center text-primary-foreground font-bold text-2xl">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-b from-primary-gradient-start to-primary-gradient-end rounded-md flex items-center justify-center text-primary-foreground font-bold text-2xl">
                       {item.number}
                     </div>
                     <div>
