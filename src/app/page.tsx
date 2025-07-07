@@ -312,7 +312,7 @@ export default function CareerFitnessQuiz() {
             Discover your unique career strengths and create a personalized development plan
           </div>
 
-          <Card className="border-primary/30">
+          <Card className="border-2 border-primary">
             <CardHeader className="items-center pb-4">
               <CardTitle>ABOUT THIS ASSESSMENT</CardTitle>
             </CardHeader>
@@ -326,7 +326,7 @@ export default function CareerFitnessQuiz() {
             </CardContent>
           </Card>
 
-          <Card className="border-primary/30">
+          <Card className="border-2 border-primary">
             <CardHeader className="items-center pb-4">
               <CardTitle>THE FOUR DIMENSIONS</CardTitle>
             </CardHeader>
