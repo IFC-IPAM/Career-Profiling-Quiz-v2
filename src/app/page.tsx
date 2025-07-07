@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FC, type ElementType, useEffect } from "react";
@@ -153,7 +154,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                     <Badge 
                       key={trait}
                       className={cn(
-                        "font-semibold text-sm py-1 px-3 rounded-full border-0 text-white hover:bg-none",
+                        "font-semibold text-sm py-1 px-3 rounded-full border-0 text-white",
                         traitColors[trait].solidBg
                       )}
                     >
@@ -322,7 +323,7 @@ export default function CareerFitnessQuiz() {
               <CardTitle className="text-xl sm:text-2xl font-bold text-primary">ABOUT THIS ASSESSMENT</CardTitle>
             </CardHeader>
             <CardContent className="flex justify-center">
-              <ul className="list-disc list-inside space-y-2 text-foreground/80 text-sm">
+              <ul className="list-disc list-inside space-y-2 text-foreground/80 text-xs">
                 <li>16 simple questions across 4 key career dimensions</li>
                 <li>Takes approximately 5-7 minutes to complete</li>
                 <li>Receive personalized insights based on your unique profile</li>
@@ -336,38 +337,38 @@ export default function CareerFitnessQuiz() {
               <CardTitle className="text-xl sm:text-2xl font-bold text-primary">THE FOUR DIMENSIONS</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex items-center gap-4 sm:gap-6">
-                <div className="w-20 h-20 rounded-md bg-trait-agility/10 flex items-center justify-center hidden sm:block shrink-0">
-                  <Zap className="h-10 w-10 text-trait-agility" />
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-md bg-trait-agility/10 flex shrink-0 items-center justify-center">
+                  <Zap className="h-8 w-8 text-trait-agility" />
                 </div>
-                <div className="flex-1 p-4 rounded-lg border-2 bg-trait-agility/10 border-trait-agility">
+                <div className="flex-1 p-4 rounded-lg border bg-card border-trait-agility">
                   <h3 className="font-bold text-trait-agility">AGILITY</h3>
                   <p className="text-foreground/80">How quickly you adapt to new skills and knowledge</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 sm:gap-6">
-                <div className="w-20 h-20 rounded-md bg-trait-agency/10 flex items-center justify-center hidden sm:block shrink-0">
-                  <Briefcase className="h-10 w-10 text-trait-agency" />
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-md bg-trait-agency/10 flex shrink-0 items-center justify-center">
+                  <Briefcase className="h-8 w-8 text-trait-agency" />
                 </div>
-                <div className="flex-1 p-4 rounded-lg border-2 bg-trait-agency/10 border-trait-agency">
+                <div className="flex-1 p-4 rounded-lg border bg-card border-trait-agency">
                   <h3 className="font-bold text-trait-agency">AGENCY</h3>
                   <p className="text-foreground/80">How proactively you manage your career journey</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 sm:gap-6">
-                <div className="w-20 h-20 rounded-md bg-trait-alignment/10 flex items-center justify-center hidden sm:block shrink-0">
-                  <Target className="h-10 w-10 text-trait-alignment" />
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-md bg-trait-alignment/10 flex shrink-0 items-center justify-center">
+                  <Target className="h-8 w-8 text-trait-alignment" />
                 </div>
-                <div className="flex-1 p-4 rounded-lg border-2 bg-trait-alignment/10 border-trait-alignment">
+                <div className="flex-1 p-4 rounded-lg border bg-card border-trait-alignment">
                   <h3 className="font-bold text-trait-alignment">ALIGNMENT</h3>
                   <p className="text-foreground/80">How well you connect personal goals with organizational needs</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 sm:gap-6">
-                <div className="w-20 h-20 rounded-md bg-trait-adaptability/10 flex items-center justify-center hidden sm:block shrink-0">
-                  <Shuffle className="h-10 w-10 text-trait-adaptability" />
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-md bg-trait-adaptability/10 flex shrink-0 items-center justify-center">
+                  <Shuffle className="h-8 w-8 text-trait-adaptability" />
                 </div>
-                <div className="flex-1 p-4 rounded-lg border-2 bg-trait-adaptability/10 border-trait-adaptability">
+                <div className="flex-1 p-4 rounded-lg border bg-card border-trait-adaptability">
                   <h3 className="font-bold text-trait-adaptability">ADAPTABILITY</h3>
                   <p className="text-foreground/80">How you adapt career priorities to suit different seasons of life</p>
                 </div>
@@ -411,7 +412,7 @@ export default function CareerFitnessQuiz() {
                             <RadioGroup
                               onValueChange={field.onChange}
                               defaultValue={field.value}
-                              className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-between gap-4 pt-2"
+                              className="flex flex-col sm:flex-row sm:justify-between gap-4 pt-2"
                             >
                               {likertScale.map((item) => (
                                 <FormItem key={item.value} className="flex items-center space-x-3 space-y-0">
