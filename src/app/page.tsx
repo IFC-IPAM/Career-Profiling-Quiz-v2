@@ -486,9 +486,13 @@ export default function CareerFitnessQuiz() {
                     />
                   ))}
                 </div>
-                <CardFooter className="flex justify-center p-0 pt-6">
+                <CardFooter className="flex justify-between p-0 pt-6">
+                  <Button type="button" variant="outline" size="lg" onClick={() => setQuizState('instructions')}>
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Back
+                  </Button>
                   <Button type="submit" size="lg" disabled={formState.isSubmitting}>
-                    {formState.isSubmitting ? "Calculating..." : "Submit & See My Profile"}
+                    {formState.isSubmitting ? "Calculating..." : "Submit"}
                   </Button>
                 </CardFooter>
               </form>
