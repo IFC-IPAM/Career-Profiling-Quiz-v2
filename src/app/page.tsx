@@ -304,17 +304,17 @@ export default function CareerFitnessQuiz() {
     return (
       <main className="min-h-screen bg-background flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
         <div className="w-full max-w-2xl mx-auto space-y-6">
-          <div className="bg-primary text-primary-foreground text-center font-bold text-xl sm:text-2xl rounded-lg px-8 py-4 shadow-md">
+          <div className="bg-primary text-primary-foreground text-center font-bold text-2xl sm:text-3xl rounded-lg px-8 py-6 shadow-lg">
             CAREER FITNESS PROFILING QUIZ
           </div>
 
-          <div className="bg-card text-card-foreground text-center rounded-lg border border-primary/30 px-8 py-3 shadow-sm text-foreground/90 text-sm">
+          <div className="bg-card text-card-foreground text-center rounded-lg border border-primary/30 px-8 py-3 shadow-sm text-foreground/90 text-base">
             Discover your unique career strengths and create a personalized development plan
           </div>
 
           <Card className="border-primary/30">
             <CardHeader className="items-center pb-4">
-              <CardTitle className="text-2xl font-bold text-primary">ABOUT THIS ASSESSMENT</CardTitle>
+              <CardTitle>ABOUT THIS ASSESSMENT</CardTitle>
             </CardHeader>
             <CardContent className="flex justify-center">
               <ul className="list-disc list-inside space-y-2 text-foreground/80 text-base">
@@ -328,7 +328,7 @@ export default function CareerFitnessQuiz() {
 
           <Card className="border-primary/30">
             <CardHeader className="items-center pb-4">
-              <CardTitle className="text-2xl font-bold text-primary">THE FOUR DIMENSIONS</CardTitle>
+              <CardTitle>THE FOUR DIMENSIONS</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center gap-4">
