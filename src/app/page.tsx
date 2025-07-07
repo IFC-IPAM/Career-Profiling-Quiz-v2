@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell } from "recharts";
-import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2 } from "lucide-react";
+import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -114,11 +115,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
     try {
       await navigator.share(shareData);
     } catch (err) {
-      // Don't treat user cancellation or permission denial as an application error.
-      // This can happen if the user clicks "Cancel" in the share dialog
-      // or if browser policies prevent sharing.
       if (err instanceof Error && (err.name === 'AbortError' || err.name === 'NotAllowedError')) {
-        // Silently ignore these cases as they are not application bugs.
       } else {
         console.error('Error sharing page: ', err);
       }
@@ -140,13 +137,11 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
     <main className="min-h-screen bg-background flex items-center justify-center p-4 sm:p-6 md:p-8">
       <div className="w-full max-w-4xl mx-auto space-y-8 animate-in fade-in-0 duration-1000">
         
-        <div className="text-center">
-           <div className="block w-full bg-primary text-primary-foreground font-bold text-xl rounded-t-lg px-8 py-3 shadow-md">
+        <div className="block w-full bg-primary text-primary-foreground font-bold text-xl rounded-t-lg px-8 py-3 shadow-md text-center">
             CAREER PROFILE RESULTS
-          </div>
         </div>
 
-        <Card className="overflow-hidden shadow-lg -mt-8 rounded-t-none">
+        <Card className="overflow-hidden shadow-lg -mt-8 rounded-t-none w-full">
           <CardContent className="p-8 text-center">
             <h2 className="text-3xl font-bold text-primary mb-4 uppercase">
               {results.profile.title}
@@ -177,7 +172,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
 
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline">Trait Analysis</CardTitle>
+            <CardTitle className="font-headline text-center">Trait Analysis</CardTitle>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="h-[250px] w-full">
@@ -198,7 +193,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                   />
                   <Bar dataKey="score" radius={4}>
                     {results.chartData.map((entry) => (
-                      <Cell key={`cell-${entry.name}`} fill={`var(--color-${entry.name})`} />
+                      <Cell key={`cell-${entry.name}`} fill={chartConfig[entry.name as keyof typeof chartConfig].color} />
                     ))}
                   </Bar>
                 </BarChart>
@@ -313,20 +308,73 @@ export default function CareerFitnessQuiz() {
   
   if (!isStarted) {
     return (
-      <main className="min-h-screen bg-background flex flex-col items-center justify-center p-4 text-center">
-        <Card className="max-w-xl w-full">
-          <CardHeader>
-            <CardTitle className="text-3xl sm:text-4xl font-bold font-headline text-primary">Discover Your Career Fitness</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-lg text-muted-foreground mb-6">
-              This short quiz will help you understand your strengths in the modern workplace. Answer 16 questions to reveal your unique career profile.
-            </p>
-          </CardContent>
-          <CardFooter className="flex justify-center">
-             <Button onClick={() => setIsStarted(true)} size="lg">Start Quiz</Button>
-          </CardFooter>
-        </Card>
+      <main className="min-h-screen bg-background flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
+        <div className="w-full max-w-2xl mx-auto space-y-6">
+          <div className="bg-primary text-primary-foreground text-center font-bold text-xl sm:text-2xl rounded-lg px-8 py-4 shadow-md">
+            CAREER FITNESS PROFILING QUIZ
+          </div>
+
+          <div className="bg-card text-card-foreground text-center rounded-lg border border-primary/30 px-8 py-3 shadow-sm text-foreground/90">
+            Discover your unique career strengths and create a personalized development plan
+          </div>
+
+          <Card className="border-primary/30">
+            <CardHeader className="items-center pb-4">
+              <CardTitle className="text-xl sm:text-2xl font-bold text-primary">ABOUT THIS ASSESSMENT</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="list-disc list-inside space-y-2 text-left max-w-md mx-auto text-foreground/80">
+                <li>16 simple questions across 4 key career dimensions</li>
+                <li>Takes approximately 5-7 minutes to complete</li>
+                <li>Receive personalized insights based on your unique profile</li>
+                <li>Get tailored development strategies to enhance your career fitness</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="border-primary/30">
+            <CardHeader className="items-center pb-4">
+              <CardTitle className="text-xl sm:text-2xl font-bold text-primary">THE FOUR DIMENSIONS</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center gap-4 sm:gap-6">
+                <Image src="https://placehold.co/128x128.png" alt="Agility illustration" width={80} height={80} className="rounded-md hidden sm:block" data-ai-hint="person pull-up bar" />
+                <div className="flex-1 p-4 rounded-lg border-2 bg-trait-agility/10 border-trait-agility">
+                  <h3 className="font-bold text-trait-agility">AGILITY</h3>
+                  <p className="text-foreground/80">How quickly you adapt to new skills and knowledge</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 sm:gap-6">
+                <Image src="https://placehold.co/128x128.png" alt="Agency illustration" width={80} height={80} className="rounded-md hidden sm:block" data-ai-hint="person compass" />
+                <div className="flex-1 p-4 rounded-lg border-2 bg-trait-agency/10 border-trait-agency">
+                  <h3 className="font-bold text-trait-agency">AGENCY</h3>
+                  <p className="text-foreground/80">How proactively you manage your career journey</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 sm:gap-6">
+                <Image src="https://placehold.co/128x128.png" alt="Alignment illustration" width={80} height={80} className="rounded-md hidden sm:block" data-ai-hint="people collaborating" />
+                <div className="flex-1 p-4 rounded-lg border-2 bg-trait-alignment/10 border-trait-alignment">
+                  <h3 className="font-bold text-trait-alignment">ALIGNMENT</h3>
+                  <p className="text-foreground/80">How well you connect personal goals with organizational needs</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 sm:gap-6">
+                <Image src="https://placehold.co/128x128.png" alt="Adaptability illustration" width={80} height={80} className="rounded-md hidden sm:block" data-ai-hint="person unicycle" />
+                <div className="flex-1 p-4 rounded-lg border-2 bg-trait-adaptability/10 border-trait-adaptability">
+                  <h3 className="font-bold text-trait-adaptability">ADAPTABILITY</h3>
+                  <p className="text-foreground/80">How you adapt career priorities to suit different seasons of life</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <div className="flex justify-center pt-2">
+            <Button onClick={() => setIsStarted(true)} size="lg">
+              Warm-Up
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
       </main>
     );
   }
