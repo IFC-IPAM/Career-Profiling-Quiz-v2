@@ -428,7 +428,7 @@ export default function CareerFitnessQuiz() {
             </Card>
           </div>
 
-          <div className="flex justify-center gap-4 pt-2">
+          <div className="flex justify-between pt-2">
             <Button onClick={() => setQuizState('welcome')} variant="outline" size="lg">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Step back
