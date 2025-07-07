@@ -147,9 +147,9 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
               {results.profile.title}
             </h2>
             {highTraits.length > 0 && (
-              <div className="flex items-center justify-center gap-4 mb-6">
-                <span className="text-sm font-semibold text-muted-foreground">PRIMARY STRENGTHS:</span>
-                <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-6">
+                <span className="shrink-0 text-sm font-semibold text-muted-foreground">PRIMARY STRENGTHS:</span>
+                <div className="flex flex-wrap justify-center gap-2">
                   {highTraits.map((trait) => (
                     <Badge 
                       key={trait}
