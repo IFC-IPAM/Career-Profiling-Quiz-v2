@@ -31,6 +31,8 @@ import {
 } from "@/components/ui/chart";
 import { questions, profiles, type Trait, type Profile } from "@/lib/quiz-data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object(
   Object.fromEntries(
@@ -50,6 +52,7 @@ type Results = {
     score: number;
   }[];
   scores: Record<Trait, number>;
+  traitLevels: Record<Trait, 'High' | 'Low'>;
 };
 
 const likertScale = [
@@ -70,21 +73,48 @@ const LoadingScreen: FC = () => (
 );
 
 const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, onRetake }) => {
+  const highTraits = (Object.keys(results.traitLevels) as Trait[]).filter(
+    (trait) => results.traitLevels[trait] === 'High'
+  );
+
   return (
     <main className="min-h-screen bg-background flex items-center justify-center p-4 sm:p-6 md:p-8">
       <div className="w-full max-w-4xl mx-auto space-y-8 animate-in fade-in-0 duration-1000">
+        
         <div className="text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold font-headline text-primary">Your Career Fitness Profile</h1>
-          <p className="mt-2 text-lg text-muted-foreground">Based on your answers, here is your profile.</p>
+          <div className="inline-block bg-primary text-primary-foreground font-bold text-xl rounded-lg px-8 py-3 mb-4 shadow-md">
+            CAREER PROFILE RESULTS
+          </div>
         </div>
-        <Card className="overflow-hidden">
-          <CardHeader>
-            <CardTitle className="text-2xl font-headline text-accent">{results.profile.title}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <CardDescription className="text-base text-foreground">
+
+        <Card className="overflow-hidden shadow-lg">
+          <CardContent className="p-8 text-center">
+            <h2 className="text-3xl font-bold text-primary mb-4 uppercase">
+              {results.profile.title}
+            </h2>
+            {highTraits.length > 0 && (
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <span className="text-sm font-semibold text-muted-foreground">PRIMARY STRENGTHS:</span>
+                <div className="flex gap-2">
+                  {highTraits.map((trait, index) => (
+                    <Badge 
+                      key={trait} 
+                      className={cn(
+                        "font-semibold text-sm py-1 px-3 rounded-full border-0",
+                        index % 2 === 0 
+                          ? "bg-primary/20 text-primary" 
+                          : "bg-accent/20 text-accent"
+                      )}
+                    >
+                      {trait}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            )}
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               {results.profile.description}
-            </CardDescription>
+            </p>
           </CardContent>
         </Card>
 
@@ -196,7 +226,7 @@ export default function CareerFitnessQuiz() {
     }));
 
     setTimeout(() => {
-      setResults({ profile, chartData, scores });
+      setResults({ profile, chartData, scores, traitLevels });
       setIsLoading(false);
       window.scrollTo(0, 0);
     }, 1500);
