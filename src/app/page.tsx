@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell } from "recharts";
 import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight } from "lucide-react";
-import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -338,28 +337,36 @@ export default function CareerFitnessQuiz() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center gap-4 sm:gap-6">
-                <Image src="https://placehold.co/128x128.png" alt="Agility illustration" width={80} height={80} className="rounded-md hidden sm:block" data-ai-hint="person pull-up bar" />
+                <div className="w-20 h-20 rounded-md bg-trait-agility/10 flex items-center justify-center hidden sm:block shrink-0">
+                  <Zap className="h-10 w-10 text-trait-agility" />
+                </div>
                 <div className="flex-1 p-4 rounded-lg border-2 bg-trait-agility/10 border-trait-agility">
                   <h3 className="font-bold text-trait-agility">AGILITY</h3>
                   <p className="text-foreground/80">How quickly you adapt to new skills and knowledge</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 sm:gap-6">
-                <Image src="https://placehold.co/128x128.png" alt="Agency illustration" width={80} height={80} className="rounded-md hidden sm:block" data-ai-hint="person compass" />
+                <div className="w-20 h-20 rounded-md bg-trait-agency/10 flex items-center justify-center hidden sm:block shrink-0">
+                  <Briefcase className="h-10 w-10 text-trait-agency" />
+                </div>
                 <div className="flex-1 p-4 rounded-lg border-2 bg-trait-agency/10 border-trait-agency">
                   <h3 className="font-bold text-trait-agency">AGENCY</h3>
                   <p className="text-foreground/80">How proactively you manage your career journey</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 sm:gap-6">
-                <Image src="https://placehold.co/128x128.png" alt="Alignment illustration" width={80} height={80} className="rounded-md hidden sm:block" data-ai-hint="people collaborating" />
+                <div className="w-20 h-20 rounded-md bg-trait-alignment/10 flex items-center justify-center hidden sm:block shrink-0">
+                  <Target className="h-10 w-10 text-trait-alignment" />
+                </div>
                 <div className="flex-1 p-4 rounded-lg border-2 bg-trait-alignment/10 border-trait-alignment">
                   <h3 className="font-bold text-trait-alignment">ALIGNMENT</h3>
                   <p className="text-foreground/80">How well you connect personal goals with organizational needs</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 sm:gap-6">
-                <Image src="https://placehold.co/128x128.png" alt="Adaptability illustration" width={80} height={80} className="rounded-md hidden sm:block" data-ai-hint="person unicycle" />
+                <div className="w-20 h-20 rounded-md bg-trait-adaptability/10 flex items-center justify-center hidden sm:block shrink-0">
+                  <Shuffle className="h-10 w-10 text-trait-adaptability" />
+                </div>
                 <div className="flex-1 p-4 rounded-lg border-2 bg-trait-adaptability/10 border-trait-adaptability">
                   <h3 className="font-bold text-trait-adaptability">ADAPTABILITY</h3>
                   <p className="text-foreground/80">How you adapt career priorities to suit different seasons of life</p>
