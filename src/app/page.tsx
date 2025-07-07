@@ -225,7 +225,7 @@ export default function CareerFitnessQuiz() {
                             <RadioGroup
                               onValueChange={field.onChange}
                               defaultValue={field.value}
-                              className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-4 pt-2"
+                              className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-between gap-4 pt-2"
                             >
                               {likertScale.map((item) => (
                                 <FormItem key={item.value} className="flex items-center space-x-3 space-y-0">
