@@ -99,7 +99,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
       <div className="w-full max-w-4xl mx-auto space-y-8 animate-in fade-in-0 duration-1000">
         
         <div className="text-center">
-          <div className="inline-block bg-primary text-primary-foreground font-bold text-xl rounded-lg px-8 py-3 mb-4 shadow-md">
+          <div className="block w-full bg-primary text-primary-foreground font-bold text-xl rounded-lg px-8 py-3 mb-4 shadow-md">
             CAREER PROFILE RESULTS
           </div>
         </div>
@@ -115,7 +115,8 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                 <div className="flex gap-2">
                   {highTraits.map((trait) => (
                     <Badge 
-                      key={trait} 
+                      key={trait}
+                      variant="outline"
                       className={cn(
                         "font-semibold text-sm py-1 px-3 rounded-full border-0",
                         traitColors[trait].bg,
@@ -133,39 +134,6 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
             </p>
           </CardContent>
         </Card>
-
-        {results.profile.developmentAreas && (
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-headline">Development Areas</CardTitle>
-              <CardDescription>
-                Tips to help you grow in each of the four career fitness traits.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Accordion type="single" collapsible className="w-full">
-                {(Object.keys(results.profile.developmentAreas) as Trait[]).map((trait) => (
-                  <AccordionItem value={trait} key={trait}>
-                    <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                      {trait}
-                    </AccordionTrigger>
-                    <AccordionContent className="space-y-3 pt-2">
-                      <p className="text-base text-muted-foreground">
-                        {results.profile.developmentAreas![trait].description}
-                      </p>
-                      <div>
-                        <span className="font-semibold text-accent">Tip: </span>
-                        <span className="text-base text-foreground">
-                          {results.profile.developmentAreas![trait].tip}
-                        </span>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </CardContent>
-          </Card>
-        )}
 
         <Card>
           <CardHeader>
@@ -200,10 +168,44 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
               </ResponsiveContainer>
             </ChartContainer>
           </CardContent>
-          <CardFooter className="flex justify-center">
-            <Button onClick={onRetake} size="lg">Retake Quiz</Button>
-          </CardFooter>
         </Card>
+        
+        {results.profile.developmentAreas && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-headline">Development Areas</CardTitle>
+              <CardDescription>
+                Tips to help you grow in each of the four career fitness traits.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Accordion type="single" collapsible className="w-full">
+                {(Object.keys(results.profile.developmentAreas) as Trait[]).map((trait) => (
+                  <AccordionItem value={trait} key={trait}>
+                    <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                      {trait}
+                    </AccordionTrigger>
+                    <AccordionContent className="space-y-3 pt-2">
+                      <p className="text-base text-muted-foreground">
+                        {results.profile.developmentAreas![trait].description}
+                      </p>
+                      <div>
+                        <span className="font-semibold text-accent">Tip: </span>
+                        <span className="text-base text-foreground">
+                          {results.profile.developmentAreas![trait].tip}
+                        </span>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </CardContent>
+          </Card>
+        )}
+
+        <div className="flex justify-center">
+            <Button onClick={onRetake} size="lg">Retake Quiz</Button>
+        </div>
       </div>
     </main>
   );
