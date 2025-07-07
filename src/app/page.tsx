@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell } from "recharts";
-import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight } from "lucide-react";
+import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight, ArrowLeft, Info } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -204,11 +204,6 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
         
         {results.profile.developmentAreas && (
            <div className="space-y-6">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold font-headline text-primary">
-                Development Areas
-              </h2>
-            </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {(Object.keys(results.profile.developmentAreas) as Trait[]).map((trait) => {
                 const Icon = traitIcons[trait];
@@ -254,9 +249,8 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
 };
 
 export default function CareerFitnessQuiz() {
+  const [quizState, setQuizState] = useState<'welcome' | 'instructions' | 'active' | 'loading' | 'results'>('welcome');
   const [results, setResults] = useState<Results | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isStarted, setIsStarted] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -266,7 +260,7 @@ export default function CareerFitnessQuiz() {
   const { formState } = form;
 
   function onSubmit(data: FormValues) {
-    setIsLoading(true);
+    setQuizState('loading');
 
     const scores: Record<Trait, number> = { Agility: 0, Agency: 0, Alignment: 0, Adaptability: 0 };
     for (const question of questions) {
@@ -291,22 +285,22 @@ export default function CareerFitnessQuiz() {
 
     setTimeout(() => {
       setResults({ profile, chartData, scores, traitLevels });
-      setIsLoading(false);
+      setQuizState('results');
       window.scrollTo(0, 0);
     }, 1500);
   }
 
   const handleRetake = () => {
     setResults(null);
-    setIsStarted(false);
+    setQuizState('welcome');
     form.reset();
     window.scrollTo(0, 0);
   };
   
-  if (isLoading) return <LoadingScreen />;
-  if (results) return <QuizResults results={results} onRetake={handleRetake} />;
+  if (quizState === 'loading') return <LoadingScreen />;
+  if (quizState === 'results' && results) return <QuizResults results={results} onRetake={handleRetake} />;
   
-  if (!isStarted) {
+  if (quizState === 'welcome') {
     return (
       <main className="min-h-screen bg-background flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
         <div className="w-full max-w-2xl mx-auto space-y-6">
@@ -343,7 +337,7 @@ export default function CareerFitnessQuiz() {
                 </div>
                 <div className="flex-1 p-4 rounded-lg border bg-card border-trait-agility">
                   <h3 className="font-bold text-trait-agility">AGILITY</h3>
-                  <p className="text-foreground/80">How quickly you adapt to new skills and knowledge</p>
+                  <p className="text-foreground/80 text-base">How quickly you adapt to new skills and knowledge</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -352,7 +346,7 @@ export default function CareerFitnessQuiz() {
                 </div>
                 <div className="flex-1 p-4 rounded-lg border bg-card border-trait-agency">
                   <h3 className="font-bold text-trait-agency">AGENCY</h3>
-                  <p className="text-foreground/80">How proactively you manage your career journey</p>
+                  <p className="text-foreground/80 text-base">How proactively you manage your career journey</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -361,7 +355,7 @@ export default function CareerFitnessQuiz() {
                 </div>
                 <div className="flex-1 p-4 rounded-lg border bg-card border-trait-alignment">
                   <h3 className="font-bold text-trait-alignment">ALIGNMENT</h3>
-                  <p className="text-foreground/80">How well you connect personal goals with organizational needs</p>
+                  <p className="text-foreground/80 text-base">How well you connect personal goals with organizational needs</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -370,15 +364,77 @@ export default function CareerFitnessQuiz() {
                 </div>
                 <div className="flex-1 p-4 rounded-lg border bg-card border-trait-adaptability">
                   <h3 className="font-bold text-trait-adaptability">ADAPTABILITY</h3>
-                  <p className="text-foreground/80">How you adapt career priorities to suit different seasons of life</p>
+                  <p className="text-foreground/80 text-base">How you adapt career priorities to suit different seasons of life</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
           <div className="flex justify-center pt-2">
-            <Button onClick={() => setIsStarted(true)} size="lg">
+            <Button onClick={() => setQuizState('instructions')} size="lg">
               Warm-Up
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (quizState === 'instructions') {
+    const scoreboardItems = [
+      { number: 1, title: "STRONGLY DISAGREE", description: "This does not describe me at all" },
+      { number: 2, title: "DISAGREE", description: "This describes me somewhat" },
+      { number: 3, title: "NEUTRAL", description: "This describes me about half the time" },
+      { number: 4, title: "AGREE", description: "This describes me most of the time" },
+      { number: 5, title: "STRONGLY AGREE", description: "This describes me completely" },
+    ];
+
+    return (
+      <main className="min-h-screen bg-background flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
+        <div className="w-full max-w-2xl mx-auto space-y-8">
+          <Card className="border-primary/30">
+            <CardContent className="p-6 flex items-start gap-4">
+              <Info className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+              <div>
+                <h2 className="text-xl font-bold text-primary">HOW TO COMPLETE THE QUIZ</h2>
+                <p className="text-foreground/80 mt-1">
+                  For each statement, indicate how much you agree or disagree based on your current career practices.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="relative">
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10">
+              <div className="bg-primary text-primary-foreground font-bold text-lg rounded-full px-6 py-2 shadow-md">
+                SCOREBOARD
+              </div>
+            </div>
+            <Card className="border-primary/30 pt-10">
+              <CardContent className="p-6 space-y-4">
+                {scoreboardItems.map((item) => (
+                  <div key={item.number} className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-md flex items-center justify-center text-primary-foreground font-bold text-2xl">
+                      {item.number}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-primary">{item.title}</h3>
+                      <p className="text-foreground/80">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="flex justify-center gap-4 pt-2">
+            <Button onClick={() => setQuizState('welcome')} variant="outline" size="lg">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Step back
+            </Button>
+            <Button onClick={() => setQuizState('active')} size="lg">
+              Game On!
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
