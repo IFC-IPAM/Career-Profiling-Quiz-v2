@@ -154,7 +154,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                     <Badge 
                       key={trait}
                       className={cn(
-                        "font-semibold text-sm py-1 px-3 rounded-full border-0 text-white hover:bg-trait-agility/90",
+                        "font-semibold text-sm py-1 px-3 rounded-full border-0 text-white",
                         traitColors[trait].solidBg
                       )}
                     >
@@ -314,7 +314,7 @@ export default function CareerFitnessQuiz() {
             CAREER FITNESS PROFILING QUIZ
           </div>
 
-          <div className="bg-card text-card-foreground text-center rounded-lg border border-primary/30 px-8 py-3 shadow-sm text-foreground/90">
+          <div className="bg-card text-card-foreground text-center rounded-lg border border-primary/30 px-8 py-3 shadow-sm text-foreground/90 text-sm">
             Discover your unique career strengths and create a personalized development plan
           </div>
 
