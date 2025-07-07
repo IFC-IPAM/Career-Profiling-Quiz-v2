@@ -206,9 +206,6 @@ export default function CareerFitnessQuiz() {
         <Card>
           <CardHeader>
             <CardTitle className="text-3xl sm:text-4xl font-bold text-center font-headline text-primary">Career Fitness Quiz</CardTitle>
-            <CardDescription className="text-center">
-              For each statement, please indicate how much you agree or disagree.
-            </CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
