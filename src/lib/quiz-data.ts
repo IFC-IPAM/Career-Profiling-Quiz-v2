@@ -10,85 +10,85 @@ export const questions: Question[] = [
   // Agility
   {
     id: 1,
-    text: "I can quickly switch between different types of work.",
+    text: "I understand my personal learning style and how I learn most effectively",
     trait: "Agility",
   },
   {
     id: 2,
-    text: "I am comfortable with unexpected changes to my projects.",
+    text: "I actively seek opportunities to gain new skills and knowledge",
     trait: "Agility",
   },
   {
     id: 3,
-    text: "I learn new skills quickly to meet job demands.",
+    text: "I am aware of emerging technologies and their potential impact on my work",
     trait: "Agility",
   },
   {
     id: 4,
-    text: "I prefer dynamic work environments over predictable ones.",
+    text: "I quickly learn and adjust when my work requires new skills",
     trait: "Agility",
   },
   // Agency
   {
     id: 5,
-    text: "I actively seek out new responsibilities at work.",
+    text: "I regularly network to build professional relationships",
     trait: "Agency",
   },
   {
     id: 6,
-    text: "I don't wait to be told what to do; I take initiative.",
+    text: "I regularly review my career values and goals",
     trait: "Agency",
   },
   {
     id: 7,
-    text: "I am confident in my ability to make decisions independently.",
+    text: "I understand the possible career pathways in public service",
     trait: "Agency",
   },
   {
     id: 8,
-    text: "I often identify and suggest improvements to processes.",
+    text: "I have a well-defined career plan with specific, achievable goals",
     trait: "Agency",
   },
   // Alignment
   {
     id: 9,
-    text: "I have a clear understanding of my company's mission and goals.",
+    text: "I understand how my role contributes to organisational goals",
     trait: "Alignment",
   },
   {
     id: 10,
-    text: "I feel that my personal values align with my organization's values.",
+    text: "I actively search for opportunities within my organisation that fulfil my personal goals",
     trait: "Alignment",
   },
   {
     id: 11,
-    text: "My work directly contributes to the success of my company.",
+    text: "I stay informed about future public service skill requirements",
     trait: "Alignment",
   },
   {
     id: 12,
-    text: "I am proud to be a part of my current organization.",
+    text: "I have regular career conversations with my supervisor (beyond performance reviews)",
     trait: "Alignment",
   },
   // Adaptability
   {
     id: 13,
-    text: "I remain calm and effective when faced with setbacks.",
+    text: "I recognize how different life stages influence career decisions",
     trait: "Adaptability",
   },
   {
     id: 14,
-    text: "I can adjust my approach when the initial plan doesn't work.",
+    text: "I adjust my career goals based on different life stages",
     trait: "Adaptability",
   },
   {
     id: 15,
-    text: "I see challenges as opportunities for growth.",
+    text: "I can identify my transferrable skills across roles for different life seasons",
     trait: "Adaptability",
   },
   {
     id: 16,
-    text: "I am open to feedback and willing to change my behaviors.",
+    text: "I am aware of work-life support (e.g. flexible work, wellness services) in the public service that can help me through different seasons of life",
     trait: "Adaptability",
   },
 ];
