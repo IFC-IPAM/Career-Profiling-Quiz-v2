@@ -314,7 +314,7 @@ export default function CareerFitnessQuiz() {
             CAREER FITNESS PROFILING QUIZ
           </div>
 
-          <div className="bg-card text-card-foreground text-center rounded-lg border border-primary/30 px-8 py-3 shadow-sm text-foreground/90">
+          <div className="bg-card text-card-foreground text-center rounded-lg border border-primary/30 px-8 py-3 shadow-sm text-foreground/90 text-sm">
             Discover your unique career strengths and create a personalized development plan
           </div>
 
@@ -323,7 +323,7 @@ export default function CareerFitnessQuiz() {
               <CardTitle className="text-xl sm:text-2xl font-bold text-primary">ABOUT THIS ASSESSMENT</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="list-disc list-inside space-y-2 text-left max-w-md mx-auto text-foreground/80">
+              <ul className="list-disc list-inside space-y-2 text-left text-foreground/80 text-sm">
                 <li>16 simple questions across 4 key career dimensions</li>
                 <li>Takes approximately 5-7 minutes to complete</li>
                 <li>Receive personalized insights based on your unique profile</li>
