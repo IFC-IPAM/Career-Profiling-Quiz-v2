@@ -37,6 +37,10 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --trait-agility: 212 93% 67%;
+    --trait-agency: 145 63% 58%;
+    --trait-alignment: 45 95% 53%;
+    --trait-adaptability: 0 91% 71%;
   }
   .dark {
     --background: 240 6% 10%;
@@ -71,6 +75,10 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --trait-agility: 212 93% 67%;
+    --trait-agency: 145 63% 58%;
+    --trait-alignment: 45 95% 53%;
+    --trait-adaptability: 0 91% 71%;
   }
 }
 

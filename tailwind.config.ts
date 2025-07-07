@@ -55,6 +55,12 @@ export default {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
+        trait: {
+          agility: 'hsl(var(--trait-agility))',
+          agency: 'hsl(var(--trait-agency))',
+          alignment: 'hsl(var(--trait-alignment))',
+          adaptability: 'hsl(var(--trait-adaptability))',
+        },
         sidebar: {
           DEFAULT: 'hsl(var(--sidebar-background))',
           foreground: 'hsl(var(--sidebar-foreground))',

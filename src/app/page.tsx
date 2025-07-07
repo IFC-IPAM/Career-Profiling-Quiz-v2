@@ -4,7 +4,7 @@ import { useState, type FC } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell } from "recharts";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -28,6 +28,7 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/components/ui/chart";
 import { questions, profiles, type Trait, type Profile } from "@/lib/quiz-data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -63,6 +64,15 @@ const likertScale = [
   { value: "5", label: "Strongly Agree" },
 ];
 
+const chartConfig = {
+  score: { label: "Score" },
+  Agility: { label: "Agility", color: "hsl(var(--trait-agility))" },
+  Agency: { label: "Agency", color: "hsl(var(--trait-agency))" },
+  Alignment: { label: "Alignment", color: "hsl(var(--trait-alignment))" },
+  Adaptability: { label: "Adaptability", color: "hsl(var(--trait-adaptability))" },
+} satisfies ChartConfig;
+
+
 const LoadingScreen: FC = () => (
   <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
     <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
@@ -76,6 +86,13 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
   const highTraits = (Object.keys(results.traitLevels) as Trait[]).filter(
     (trait) => results.traitLevels[trait] === 'High'
   );
+
+  const traitColors: Record<Trait, { bg: string; text: string }> = {
+    Agility: { bg: "bg-trait-agility/20", text: "text-trait-agility" },
+    Agency: { bg: "bg-trait-agency/20", text: "text-trait-agency" },
+    Alignment: { bg: "bg-trait-alignment/20", text: "text-trait-alignment" },
+    Adaptability: { bg: "bg-trait-adaptability/20", text: "text-trait-adaptability" },
+  };
 
   return (
     <main className="min-h-screen bg-background flex items-center justify-center p-4 sm:p-6 md:p-8">
@@ -96,14 +113,13 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
               <div className="flex items-center justify-center gap-4 mb-6">
                 <span className="text-sm font-semibold text-muted-foreground">PRIMARY STRENGTHS:</span>
                 <div className="flex gap-2">
-                  {highTraits.map((trait, index) => (
+                  {highTraits.map((trait) => (
                     <Badge 
                       key={trait} 
                       className={cn(
                         "font-semibold text-sm py-1 px-3 rounded-full border-0",
-                        index % 2 === 0 
-                          ? "bg-primary/20 text-primary" 
-                          : "bg-accent/20 text-accent"
+                        traitColors[trait].bg,
+                        traitColors[trait].text,
                       )}
                     >
                       {trait}
@@ -159,7 +175,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={{ score: { label: "Score", color: "hsl(var(--primary))" } }} className="h-[250px] w-full">
+            <ChartContainer config={chartConfig} className="h-[250px] w-full">
               <ResponsiveContainer>
                 <BarChart layout="vertical" data={results.chartData} margin={{ left: 10 }}>
                   <CartesianGrid horizontal={false} />
@@ -175,7 +191,11 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                     cursor={{ fill: 'hsl(var(--muted))' }}
                     content={<ChartTooltipContent indicator="dot" />}
                   />
-                  <Bar dataKey="score" radius={4} />
+                  <Bar dataKey="score" radius={4}>
+                    {results.chartData.map((entry) => (
+                      <Cell key={`cell-${entry.name}`} fill={`var(--color-${entry.name})`} />
+                    ))}
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </ChartContainer>
