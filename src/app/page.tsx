@@ -370,7 +370,7 @@ export default function CareerFitnessQuiz() {
             </CardContent>
           </Card>
           
-          <div className="flex justify-center pt-2">
+          <div className="flex justify-end pt-2">
             <Button onClick={() => setQuizState('instructions')} size="lg">
               Warm-Up
               <ArrowRight className="ml-2 h-4 w-4" />
