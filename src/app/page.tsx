@@ -154,7 +154,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                     <Badge 
                       key={trait}
                       className={cn(
-                        "font-semibold text-sm py-1 px-3 rounded-full border-0 text-white",
+                        "font-semibold text-sm py-1 px-3 rounded-full border-0 text-white hover:bg-none",
                         traitColors[trait].solidBg
                       )}
                     >
@@ -322,8 +322,8 @@ export default function CareerFitnessQuiz() {
             <CardHeader className="items-center pb-4">
               <CardTitle className="text-xl sm:text-2xl font-bold text-primary">ABOUT THIS ASSESSMENT</CardTitle>
             </CardHeader>
-            <CardContent>
-              <ul className="list-disc list-inside space-y-2 text-left text-foreground/80 text-sm">
+            <CardContent className="flex justify-center">
+              <ul className="list-disc list-inside space-y-2 text-foreground/80 text-sm">
                 <li>16 simple questions across 4 key career dimensions</li>
                 <li>Takes approximately 5-7 minutes to complete</li>
                 <li>Receive personalized insights based on your unique profile</li>
