@@ -114,7 +114,14 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
     try {
       await navigator.share(shareData);
     } catch (err) {
-      console.error('Error sharing page: ', err);
+      // Don't treat user cancellation or permission denial as an application error.
+      // This can happen if the user clicks "Cancel" in the share dialog
+      // or if browser policies prevent sharing.
+      if (err instanceof Error && (err.name === 'AbortError' || err.name === 'NotAllowedError')) {
+        // Silently ignore these cases as they are not application bugs.
+      } else {
+        console.error('Error sharing page: ', err);
+      }
     }
   };
 
@@ -152,7 +159,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                     <Badge 
                       key={trait}
                       className={cn(
-                        "font-semibold text-sm py-1 px-3 rounded-full border-0 text-white hover:opacity-90",
+                        "font-semibold text-sm py-1 px-3 rounded-full border-0 text-white",
                         traitColors[trait].solidBg
                       )}
                     >
