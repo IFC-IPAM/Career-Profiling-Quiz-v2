@@ -24,7 +24,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Progress } from "@/components/ui/progress";
 import {
   ChartContainer,
   ChartTooltip,
@@ -138,10 +137,7 @@ export default function CareerFitnessQuiz() {
     defaultValues: Object.fromEntries(questions.map((q) => [`q${q.id}`, ""])),
   });
 
-  const { formState, watch } = form;
-
-  const answeredQuestions = Object.values(watch()).filter(v => v !== "").length;
-  const progress = (answeredQuestions / questions.length) * 100;
+  const { formState } = form;
 
   function onSubmit(data: FormValues) {
     setIsLoading(true);
@@ -213,10 +209,6 @@ export default function CareerFitnessQuiz() {
             <CardDescription className="text-center">
               For each statement, please indicate how much you agree or disagree.
             </CardDescription>
-            <div className="pt-4">
-              <Progress value={progress} className="w-full" />
-              <p className="text-sm text-muted-foreground mt-2 text-center">{answeredQuestions} of {questions.length} answered</p>
-            </div>
           </CardHeader>
           <CardContent>
             <Form {...form}>
