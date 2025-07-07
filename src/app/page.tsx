@@ -29,7 +29,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { questions, profiles, type Trait } from "@/lib/quiz-data";
+import { questions, profiles, type Trait, type Profile } from "@/lib/quiz-data";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const formSchema = z.object(
   Object.fromEntries(
@@ -43,10 +44,7 @@ const formSchema = z.object(
 type FormValues = z.infer<typeof formSchema>;
 
 type Results = {
-  profile: {
-    title: string;
-    description: string;
-  };
+  profile: Profile;
   chartData: {
     name: string;
     score: number;
@@ -89,6 +87,40 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
             </CardDescription>
           </CardContent>
         </Card>
+
+        {results.profile.developmentAreas && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-headline">Development Areas</CardTitle>
+              <CardDescription>
+                Tips to help you grow in each of the four career fitness traits.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Accordion type="single" collapsible className="w-full">
+                {(Object.keys(results.profile.developmentAreas) as Trait[]).map((trait) => (
+                  <AccordionItem value={trait} key={trait}>
+                    <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                      {trait}
+                    </AccordionTrigger>
+                    <AccordionContent className="space-y-3 pt-2">
+                      <p className="text-base text-muted-foreground">
+                        {results.profile.developmentAreas![trait].description}
+                      </p>
+                      <div>
+                        <span className="font-semibold text-accent">Tip: </span>
+                        <span className="text-base text-foreground">
+                          {results.profile.developmentAreas![trait].tip}
+                        </span>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </CardContent>
+          </Card>
+        )}
+
         <Card>
           <CardHeader>
             <CardTitle className="font-headline">Trait Analysis</CardTitle>
@@ -156,7 +188,7 @@ export default function CareerFitnessQuiz() {
     };
 
     const profileKey = `${traitLevels.Agility}-${traitLevels.Agency}-${traitLevels.Alignment}-${traitLevels.Adaptability}`;
-    const profile = profiles[profileKey as keyof typeof profiles];
+    const profile = profiles[profileKey as keyof typeof profiles] || profiles["default"];
 
     const chartData = (Object.keys(scores) as Trait[]).map((trait) => ({
       name: trait,
