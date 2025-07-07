@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, type FC, type ElementType } from "react";
+import { useState, type FC, type ElementType, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell } from "recharts";
-import { Zap, Briefcase, Target, Shuffle, Lightbulb } from "lucide-react";
+import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -97,6 +97,27 @@ const LoadingScreen: FC = () => (
 );
 
 const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, onRetake }) => {
+  const [canShare, setCanShare] = useState(false);
+
+  useEffect(() => {
+    if (typeof navigator !== "undefined" && navigator.share) {
+      setCanShare(true);
+    }
+  }, []);
+
+  const handleShare = async () => {
+    const shareData = {
+      title: 'Career Fitness Profiling Quiz',
+      text: "I just discovered my career fitness profile! Take the quiz to find out yours.",
+      url: window.location.origin,
+    };
+    try {
+      await navigator.share(shareData);
+    } catch (err) {
+      console.error('Error sharing page: ', err);
+    }
+  };
+
   const highTraits = (Object.keys(results.traitLevels) as Trait[]).filter(
     (trait) => results.traitLevels[trait] === 'High'
   );
@@ -131,7 +152,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                     <Badge 
                       key={trait}
                       className={cn(
-                        "font-semibold text-sm py-1 px-3 rounded-full border-0 text-white",
+                        "font-semibold text-sm py-1 px-3 rounded-full border-0 text-white hover:opacity-90",
                         traitColors[trait].solidBg
                       )}
                     >
@@ -150,9 +171,6 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
         <Card>
           <CardHeader>
             <CardTitle className="font-headline">Trait Analysis</CardTitle>
-            <CardDescription>
-              Your scores for each career fitness trait, converted to a percentage.
-            </CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="h-[250px] w-full">
@@ -219,8 +237,14 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
           </div>
         )}
 
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
             <Button onClick={onRetake} size="lg">Retake Quiz</Button>
+            {canShare && (
+              <Button onClick={handleShare} size="lg" variant="outline">
+                <Share2 />
+                Share
+              </Button>
+            )}
         </div>
       </div>
     </main>
