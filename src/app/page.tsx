@@ -314,7 +314,7 @@ export default function CareerFitnessQuiz() {
 
           <Card className="border-primary/30">
             <CardHeader className="items-center pb-4">
-              <CardTitle className="text-xl sm:text-2xl font-bold text-primary">ABOUT THIS ASSESSMENT</CardTitle>
+              <CardTitle className="text-2xl sm:text-3xl font-bold text-primary">ABOUT THIS ASSESSMENT</CardTitle>
             </CardHeader>
             <CardContent className="flex justify-center">
               <ul className="list-disc list-inside space-y-2 text-foreground/80 text-base">
@@ -328,7 +328,7 @@ export default function CareerFitnessQuiz() {
 
           <Card className="border-primary/30">
             <CardHeader className="items-center pb-4">
-              <CardTitle className="text-xl sm:text-2xl font-bold text-primary">THE FOUR DIMENSIONS</CardTitle>
+              <CardTitle className="text-2xl sm:text-3xl font-bold text-primary">THE FOUR DIMENSIONS</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center gap-4">
