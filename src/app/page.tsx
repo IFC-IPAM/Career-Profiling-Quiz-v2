@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, type FC } from "react";
+import { useState, type FC, type ElementType } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell } from "recharts";
+import { Zap, Briefcase, Target, Shuffle, Lightbulb } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -31,7 +32,6 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart";
 import { questions, profiles, type Trait, type Profile } from "@/lib/quiz-data";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
@@ -72,6 +72,20 @@ const chartConfig = {
   Adaptability: { label: "Adaptability", color: "hsl(var(--trait-adaptability))" },
 } satisfies ChartConfig;
 
+const traitDefinitions: Record<Trait, string> = {
+  Agility: "How quickly you adapt to new skills and knowledge",
+  Agency: "How proactively you manage your career journey",
+  Alignment: "How well you connect personal goals with organizational needs",
+  Adaptability: "How you adapt career priorities to suit different seasons of life",
+};
+
+const traitIcons: Record<Trait, ElementType> = {
+  Agility: Zap,
+  Agency: Briefcase,
+  Alignment: Target,
+  Adaptability: Shuffle,
+};
+
 
 const LoadingScreen: FC = () => (
   <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
@@ -87,11 +101,11 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
     (trait) => results.traitLevels[trait] === 'High'
   );
 
-  const traitColors: Record<Trait, { bg: string; text: string }> = {
-    Agility: { bg: "bg-trait-agility/20", text: "text-trait-agility" },
-    Agency: { bg: "bg-trait-agency/20", text: "text-trait-agency" },
-    Alignment: { bg: "bg-trait-alignment/20", text: "text-trait-alignment" },
-    Adaptability: { bg: "bg-trait-adaptability/20", text: "text-trait-adaptability" },
+  const traitColors: Record<Trait, { text: string; border: string; solidBg: string }> = {
+    Agility: { text: "text-trait-agility", border: "border-t-trait-agility", solidBg: "bg-trait-agility" },
+    Agency: { text: "text-trait-agency", border: "border-t-trait-agency", solidBg: "bg-trait-agency" },
+    Alignment: { text: "text-trait-alignment", border: "border-t-trait-alignment", solidBg: "bg-trait-alignment" },
+    Adaptability: { text: "text-trait-adaptability", border: "border-t-trait-adaptability", solidBg: "bg-trait-adaptability" },
   };
 
   return (
@@ -99,12 +113,12 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
       <div className="w-full max-w-4xl mx-auto space-y-8 animate-in fade-in-0 duration-1000">
         
         <div className="text-center">
-          <div className="block w-full bg-primary text-primary-foreground font-bold text-xl rounded-lg px-8 py-3 mb-4 shadow-md">
+           <div className="block w-full bg-primary text-primary-foreground font-bold text-xl rounded-t-lg px-8 py-3 shadow-md">
             CAREER PROFILE RESULTS
           </div>
         </div>
 
-        <Card className="overflow-hidden shadow-lg">
+        <Card className="overflow-hidden shadow-lg -mt-8 rounded-t-none">
           <CardContent className="p-8 text-center">
             <h2 className="text-3xl font-bold text-primary mb-4 uppercase">
               {results.profile.title}
@@ -116,11 +130,9 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                   {highTraits.map((trait) => (
                     <Badge 
                       key={trait}
-                      variant="outline"
                       className={cn(
-                        "font-semibold text-sm py-1 px-3 rounded-full border-0",
-                        traitColors[trait].bg,
-                        traitColors[trait].text,
+                        "font-semibold text-sm py-1 px-3 rounded-full border-0 text-white",
+                        traitColors[trait].solidBg
                       )}
                     >
                       {trait}
@@ -171,36 +183,43 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
         </Card>
         
         {results.profile.developmentAreas && (
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-headline">Development Areas</CardTitle>
-              <CardDescription>
+           <div className="space-y-6">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold font-headline text-primary">
+                Development Areas
+              </h2>
+              <p className="mt-2 text-muted-foreground">
                 Tips to help you grow in each of the four career fitness traits.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Accordion type="single" collapsible className="w-full">
-                {(Object.keys(results.profile.developmentAreas) as Trait[]).map((trait) => (
-                  <AccordionItem value={trait} key={trait}>
-                    <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                      {trait}
-                    </AccordionTrigger>
-                    <AccordionContent className="space-y-3 pt-2">
-                      <p className="text-base text-muted-foreground">
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {(Object.keys(results.profile.developmentAreas) as Trait[]).map((trait) => {
+                const Icon = traitIcons[trait];
+                return (
+                  <Card key={trait} className={cn("overflow-hidden border-t-4", traitColors[trait].border)}>
+                    <CardContent className="space-y-4 p-6">
+                      <div className="flex items-center gap-3">
+                        <Icon className={cn("h-7 w-7", traitColors[trait].text)} />
+                        <h3 className={cn("text-xl font-bold uppercase", traitColors[trait].text)}>
+                          {trait}
+                        </h3>
+                      </div>
+                      <p className="text-base text-muted-foreground">{traitDefinitions[trait]}</p>
+                      <p className="text-base text-foreground">
                         {results.profile.developmentAreas![trait].description}
                       </p>
-                      <div>
-                        <span className="font-semibold text-accent">Tip: </span>
-                        <span className="text-base text-foreground">
+                      <div className="mt-2 flex items-start gap-4 rounded-lg bg-muted/50 p-4 shadow-sm">
+                        <Lightbulb className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
+                        <p className="text-sm text-foreground">
                           {results.profile.developmentAreas![trait].tip}
-                        </span>
+                        </p>
                       </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </CardContent>
-          </Card>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
         )}
 
         <div className="flex justify-center">
