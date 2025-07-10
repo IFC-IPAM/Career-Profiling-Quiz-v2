@@ -280,7 +280,7 @@ export default function CareerFitnessQuiz() {
 
     const chartData = (Object.keys(scores) as Trait[]).map((trait) => ({
       name: trait,
-      score: Math.round(((scores[trait] - 4) / 16) * 100),
+      score: Math.round((scores[trait] / 20) * 100),
     }));
 
     setTimeout(() => {
