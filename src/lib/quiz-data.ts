@@ -1,3 +1,4 @@
+
 export type Trait = "Agility" | "Agency" | "Alignment" | "Adaptability";
 
 type Question = {
@@ -113,162 +114,162 @@ export type Profile = {
 export const profiles: Record<string, Profile> = {
     "High-Low-Low-Low": {
         title: "The HIIT Specialist",
-        description: "Like a HIIT enthusiast combining different movements in intense bursts, you excel at rapidly acquiring skills and switching between challenges. You leverage your preferred learning style to master new skills and technologies, demonstrating quick adaptation in changing environments.",
+        description: "Like a HIIT enthusiast combining different movements in intense bursts, you excel at rapidly acquiring skills and switching between challenges. You leverage your preferred learning style to master new skills demonstrating quick adaptation in changing environment. Continue strengthening your strong agility while developing your agency, alignment, and adaptation to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The HIIT specialist excels at quick learning and versatility; challenge lies in developing deeper expertise", tip: "Identify skills that align with career interests to deepen and specialise into deep expertise" },
-            Agency: { description: "The HIIT specialist's adaptable nature needs anchoring with clearer career direction and purpose", tip: "Create a long-term development roadmap that communicates your unique value proposition" },
-            Alignment: { description: "The HIIT specialist's diverse capabilities need stronger links to organizational priorities", tip: "Schedule regular discussions with your supervisor to align skill development with organizational needs" },
-            Adaptability: { description: "The HIIT specialist's quick-learning approach needs more focus for long-term success", tip: "Implement a weekly reflection routine to evaluate career priorities as strategic recovery" }
+            Agility: { description: "While you excel at quick learning, you can continue to develop deeper expertise", tip: "Identify skills that align with your career interests to deepen and specialise into deep expertise" },
+            Agency: { description: "You can develop clearer career direction and purpose", tip: "Create a long-term development roadmap that communicates your unique value proposition" },
+            Alignment: { description: "You can develop stronger connections between your capabilities and organizational priorities", tip: "Schedule regular discussions with your supervisor to better align skill development with organizational needs" },
+            Adaptability: { description: "You can develop more focused approaches for long-term success", tip: "Implement a weekly reflection routine to evaluate career priorities" }
         }
     },
     "Low-High-Low-Low": {
         title: "The Mountain Climber",
-        description: "Like a skilled climber planning routes and ascents, you excel at charting your own career path and making independent decisions. You take full ownership of your journey, carefully assessing your position and identifying promising paths forward as you strategically navigate to new professional heights.",
+        description: "Like a skilled climber planning routes and ascents, you excel at charting your own career path and making independent decisions. You take full ownership of your journey, carefully assessing your position and identifying promising paths forward as you strategically navigate to new professional heights. Continue strengthening your strong sence of agency while developing your agility, alignment, and adaptation to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "A career climber can optimize their learning approach through real-time work experiences", tip: "Match tasks to your preferred learning style while measuring effectiveness within current work assignments" },
-            Agency: { description: "A career climber needs clear pathways for different scenarios", tip: "Create a detailed 3–5 year career pathway document with alternative routes and clear decision points" },
-            Alignment: { description: "A career climber might miss organizational connections", tip: "Join at least one cross-functional project each quarter to build diverse organizational relationships" },
-            Adaptability: { description: "A career climber might neglect life balance", tip: "Conduct monthly assessments of energy levels and wellbeing while reviewing career aspirations against personal commitments" }
+            Agility: { description: "You can develop an optimized learning approach using real-time work experiences as opportunities", tip: "Match tasks to your preferred learning style and measure effectiveness within your current work assignments" },
+            Agency: { description: "While you excel at maintaining clear career direction, you can continue to strengthen your access to diverse pathways and insights", tip: "Build relationships and expand your network outside your team or agency who can serve as career guides" },
+            Alignment: { description: "You can develop stronger organizational connections", tip: "Join at least one cross-functional project to build diverse organizational relationships" },
+            Adaptability: { description: "You can develop better balance between career aspirations and personal wellbeing", tip: "Review career aspirations with your personal commitments by establishing clear boundaries and priorities" }
         }
     },
     "Low-Low-High-Low": {
         title: "The Archer",
-        description: "Like an archer who masters wind patterns and distance calculations, you excel at aligning career moves with organizational needs, turning industry trends into opportunities. You maintain unwavering focus while adapting to changing conditions, skillfully calibrating personal development to create organizational impact.",
+        description: "Like an archer who masters wind patterns and distance calculations, you excel at aligning career moves with organizational needs, turning industry trends into opportunities. You maintain unwavering focus while adapting to changing conditions, calibrating personal development to create organizational impact. Continue strengthening your ability to align with organisational goals while developing your agility, agency and adaptation to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The archer might over-analyze before taking the shot", tip: "Practice quick adjustments with weekly technique sprints instead of waiting for perfect conditions" },
-            Agency: { description: "The archer may focus too much on target requirements versus personal form", tip: "Create a personal development roadmap with quarterly milestones that balance technique refinement with scoring goals" },
-            Alignment: { description: "The archer has natural ability to gauge distances but needs structured practice", tip: "Create monthly impact maps linking shooting technique improvements to competition objectives" },
-            Adaptability: { description: "The archer might let competition focus overshadow personal rhythms", tip: "Develop a quarterly training-life integration plan that aligns competition seasons with personal milestones" }
+            Agility: { description: "You can develop quicker decision-making approaches rather than over-analyzing", tip: "Test different work methods through rapid trials to find your most effective approach, rather than waiting for perfect plans" },
+            Agency: { description: "You can develop better balance between organizational requirements and personal growth", tip: "Engage with Public Service Career Coach to design a development plan that align with your career values and interests." },
+            Alignment: { description: "While you excel at understanding organizational dynamics, you can continue to strengthen your structured approach", tip: "Create a personal development roadmap with quarterly milestones that balances your career aspirations with organizational goals" },
+            Adaptability: { description: "You can develop better integration between work intensity and personal wellbeing", tip: "Schedule regular check-ins with your reporting officer during mid-year and year-end reviews to discuss workload sustainability" }
         }
     },
     "Low-Low-Low-High": {
         title: "The Marathon Runner",
-        description: "Like a seasoned marathon runner adapting to changing terrains, you excel at pacing your career through life's seasons. You naturally know when to sprint ahead and when to adjust your stride, balancing career momentum with personal priorities across different life stages.",
+        description: "Like a seasoned marathon runner adapting to changing terrains, you excel at pacing your career through life's seasons. You naturally know when to sprint ahead and when to adjust your stride, balancing career momentum with personal priorities. Continue strengthening your ability to adapt through different seasons of life while developing your agility, agency and alignment to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The marathon runner might settle into a comfortable pace, missing opportunities to accelerate", tip: "Set quarterly skill upgrade goals with specific milestones, even during steady training periods" },
-            Agency: { description: "The marathon runner might react to course changes rather than plan strategic moves ahead", tip: "Schedule quarterly route reviews with mentors or your supervisor" },
-            Alignment: { description: "The marathon runner's focus on personal pace might miss team relay requirements", tip: "Map your strengths to team objectives" },
-            Adaptability: { description: "The marathon runner's natural endurance needs systematic recovery planning", tip: "Implement energy management routines with rest and social structures and supports" }
+            Agility: { description: "You can develop a more proactive approach to skill development during stable work periods", tip: "Discuss your quarterly learning goals with your supervisor regular check-ins, focusing on both current role mastery and future skill needs" },
+            Agency: { description: "You can develop more strategic career planning approaches", tip: "Engage with a Public service career coach or supervisor to explore your career values and its alignment with your career direction and development (horizontal, vertical or diagonal development)." },
+            Alignment: { description: "You can develop stronger connections between individual work and team objectives", tip: "Map your personal contributions to team workplan outcomes during mid-year and year-end reviews, identifying areas where your strengths can better support team goals" },
+            Adaptability: { description: "While you excel at maintaining long-term sustainability, you can continue to strengthen your approach to work-life harmony", tip: "Participate in Public Service communities (e.g. sports and volunteer) to develop hobbies and build supportive networks" }
         }
     },
     "High-High-Low-Low": {
         title: "The CrossFit Athlete",
-        description: "Like a CrossFit athlete excelling at varied workouts while programming their own training, you combine rapid skill acquisition with strong career ownership. You master multiple competencies while maintaining clear direction of your development path, balancing quick learning with strategic progression.",
+        description: "Like a CrossFit athlete excelling at varied workouts while programming their own training, you combine rapid skill acquisition with strong career ownership. You master multiple competencies while maintaining clear direction of your development path, balancing quick learning with strategic progression. Continue strengthening your agility and agency while develop the skills to align and adaptat to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The CrossFit athlete excels at varied skill acquisition but requires more structured progression", tip: "Set monthly skill challenges with rotation through different movement domains" },
-            Agency: { description: "The CrossFit athlete masters self-programming but lacks strategic periodization", tip: "Create a quarterly personal development roadmap with specific skill expansion opportunities" },
-            Alignment: { description: "The CrossFit athlete shows strong skill versatility but requires clearer organizational alignment", tip: "Map each new skill acquisition to department goals and team objectives" },
-            Adaptability: { description: "The CrossFit athlete demonstrates high work capacity but lacks systematic recovery planning", tip: "Implement annual reflection or guided conversation to reassess career values" }
+            Agility: { description: "While you excel at rapid skill acquisition, you can continue to develop more structured learning progression", tip: "Set 1-2 development goals for the year with different competency areas (e.g., technical skills, core competencies)" },
+            Agency: { description: "While you excel at self-directed learning, you can continue to strengthen your strategic planning", tip: "Create a quarterly personal development roadmap with specific skill expansion opportunities" },
+            Alignment: { description: "You can develop clearer connections between your versatile skillset and organizational needs", tip: "Map each new competency to your department's strategic objectives and team workplan" },
+            Adaptability: { description: "You can develop more systematic approaches to sustainable performance", tip: "Schedule regular reflection or guided conversation to reassess career values." }
         }
     },
     "High-Low-High-Low": {
         title: "The E-sport Player",
-        description: "Like an elite e-sports player mastering new game mechanics while coordinating team strategies, you combine swift skill acquisition with organizational awareness. You analyze changes and adapt strategies, naturally connecting personal growth to team success.",
+        description: "Like an elite e-sports player mastering new game mechanics while coordinating team strategies, you combine swift skill acquisition with organizational awareness. You analyze changes and adapt strategies, naturally connecting personal growth to team success. Continue strengthening your agility and alignment with organisation goals while developing your agency and adaptation to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The pro gamer excels at mastering new mechanics and would benefit from more systematic skill progression", tip: "Create regular skill training routines for new technologies while sharing knowledge in team sessions" },
-            Agency: { description: "The pro gamer excels at developing unique playstyles and can strengthen long-term strategic planning", tip: "Map out your skill development path while building on your distinctive strengths" },
-            Alignment: { description: "The pro gamer excels at individual performance and can enhance team-oriented strategic impact", tip: "Sync your skill development with team objectives through custom training assignments" },
-            Adaptability: { description: "The pro gamer excels at quick adaptation to changes and would benefit from sustainable performance planning", tip: "Balance intensive learning periods with strategic breaks, like managing in-game resources" }
+            Agility: { description: "While you excel at mastering new technologies, you can continue to develop more systematic skill progression", tip: "Create regular learning routines for emerging tools while conducting knowledge-sharing sessions with your team" },
+            Agency: { description: "You can develop clearer long-term career direction while leveraging your unique strengths", tip: "Map out your professional development path with specific milestones and competency targets" },
+            Alignment: { description: "While you excel at connecting individual contributions to team goals, you can continue to strengthen collaborative impact at department or organisational level.", tip: "Sync your skill development through regular inter-department/organisation level projects." },
+            Adaptability: { description: "You can develop more sustainable approaches to managing work intensity", tip: "Balance intensive project periods with strategic recovery phases, explore project management techniques to increase time efficiency." }
         }
     },
     "High-Low-Low-High": {
         title: "The High Jumper",
-        description: "Like an elite high jumper perfecting their approach and technique while managing competition cycles, you excel at rapid skill acquisition while managing life commitments. You naturally time your peak performances with recovery periods, just as a jumper calibrates their run-up and launch.",
+        description: "Like an elite high jumper perfecting their approach and technique while managing competition cycles, you excel at rapid skill acquisition while managing life commitments. You naturally time your peak performances with recovery periods. Continue strengthening your agility and adaptation while developing your agency and alignment enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The high jumper excels at precise execution and would benefit from more experimental learning approaches", tip: "Document successful learning patterns while trying different techniques for skill acquisition" },
-            Agency: { description: "The high jumper excels at disciplined practice and can develop stronger career direction ownership", tip: "Take initiative in seeking stretch assignments that build on technical strengths" },
-            Alignment: { description: "The high jumper excels at individual performance and can enhance collaborative impact", tip: "Co-design projects that leverage your technical precision for team objectives" },
-            Adaptability: { description: "The high jumper excels at managing performance cycles and would benefit from strategic recovery planning", tip: "Design clear rhythms between intensive learning and integration periods" }
+            Agility: { description: "While you excel at precise execution in learning, you can continue to explore skills that best match your career interest and strengths", tip: "Join relevant Communities of Practice (CoPs) to build skills to find more fulfilment and expand network with peers across agencies" },
+            Agency: { description: "You can develop stronger ownership of your career direction", tip: "Take initiative in seeking challenging assignments that build on your technical strengths and soft skills" },
+            Alignment: { description: "You can develop stronger ways to contribute to team outcomes", tip: "Join cross-functional projects to broaden your impact while applying your technical and soft skills" },
+            Adaptability: { description: "While you excel at managing work cycles now, you can continue to strengthen for long-term sustainability", tip: "Be aware of your energy levels, deliberately plan for recovery time after high-intensity projects periods." }
         }
     },
     "Low-High-High-Low": {
         title: "The Basketball Shooter",
-        description: "Like an elite basketball shooter who balances personal scoring with team success, you masterfully chart your career while keeping organizational goals in focus. Just as a shooter knows when to take the shot and when to create opportunities for others, you strategically blend individual growth with team impact.",
+        description: "Like an elite basketball shooter who balances personal scoring with team success, you masterfully chart your career while keeping organizational goals in focus. Just as a shooter knows when to take the shot and when to create opportunities for others, you blend individual growth with team impact. Continue strengthening your agency and align with organisational goals while developing your agility and adaptation to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "A sports tactician needs to balance planning with quick adaptation", tip: "Establish \"quick-test days\" where you commit to testing one new approach with minimal preparation" },
-            Agency: { description: "A sports tactician excels at charting their course but requires more diverse experiences", tip: "Design a quarterly development roadmap that deliberately includes varied roles and cross-functional projects" },
-            Alignment: { description: "A sports tactician shows strong organizational awareness but needs systematic tracking", tip: "Create monthly impact reports that map personal projects to specific organizational objectives" },
-            Adaptability: { description: "A sports tactician needs to balance strategic career focus with personal life needs", tip: "Schedule quarterly life-career alignment reviews to adjust career pace with life stages" }
+            Agility: { description: "You can develop learn more efficiently to respond to dynamic work situations", tip: "Use LEARN portal's micro-learning modules for quick skill acquisition and immediately apply the concepts in your current projects" },
+            Agency: { description: "While you excel at taking ownership of your development path, you can continue to diversify your experiences", tip: "Design a quarterly development roadmap that includes varied roles and cross-functional projects to expand your range" },
+            Alignment: { description: "While you excel at hitting organizational targets, you can continue to strengthen your strategic contributions", tip: "Create monthly progress updates that clearly show how your work directly supports key organizational objectives" },
+            Adaptability: { description: "You can develop better balance between performance intensity and recovery", tip: "Schedule half-yearly reviews to adjust your work intensity and ensure sustainable high performance over the long term" }
         }
     },
     "Low-High-Low-High": {
-        title: "The Lifestyle Coach",
-        description: "Like a lifestyle coach, you masterfully direct your career while respecting life's different seasons. Your talent lies in designing flexible career paths that maintain momentum through various life phases, just as a coach creates programs that adapt to their clients' changing fitness needs.",
+        title: "The Free Diver",
+        description: "Like a free diver who masters precise control and calculated risks, skillfully balancing intense preparation phases with essential recovery periods. You demonstrate remarkable self-regulation and work-life integration, just as a free diver carefully manages deep dives with surface intervals. Continue strengthening your strong agency and adaptation while developing your agility and alignment to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The lifestyle coach excels at guiding others through change and would benefit from accelerating their own learning adaptability", tip: "Take an assessment on your learning agility to find out your preferred learning style" },
-            Agency: { description: "The lifestyle coach excels at creating sustainable paths for others and can develop clearer milestones for their own career journey", tip: "Take on 2–3 stretch assignments through STIP or GIG opportunities each year to expand your expertise beyond coaching" },
-            Alignment: { description: "The lifestyle coach excels at personal-professional integration and can strengthen their contribution to business outcomes", tip: "Schedule quarterly check-ins with your supervisors to align your projects to organizational goals better" },
-            Adaptability: { description: "The lifestyle coach is evolving their own professional identity across different career phases", tip: "Develop your personal brand further by identifying your unique value across different seasons of life" }
+            Agility: { description: "You can develop faster learning adaptability and skill experimentation", tip: "Take an assessment on your learning agility to discover new approaches beyond your comfort zone" },
+            Agency: { description: "While you excel at calculated risk-taking and self-direction, you can continue to build clearer career milestones", tip: "Take on 2-3 stretch assignments through STIP or GIG opportunities to expand your expertise to new areas" },
+            Alignment: { description: "You can develop stronger connections between your precise work and organizational goals", tip: "Schedule quarterly check-ins with supervisors to better align your contributions with organizational priorities" },
+            Adaptability: { description: "While you excel at balancing intensity with recovery phases, you can continue to evolve across different life phases", tip: "Develop your professional identity by aligning your unique strengths with different seasons of life" }
         }
     },
     "Low-Low-High-High": {
-        title: "The Season Trainer",
-        description: "Like a seasonal training coach, you harmonize organizational goals with life's natural rhythms, skillfully balancing business cycles with personal seasons. You excel at creating sustainable strategic impact while maintaining healthy work-life integration, just as a trainer adjusts team intensity through different seasons while keeping sight of long-term objectives.",
+        title: "The Synchronised Swimmer",
+        description: "Like a synchronized swimmer, you excel at harmonizing with team rhythms and organizational flow, skillfully aligning your movements with collective patterns. You demonstrate natural ability in adapting to different performance cycles, just as a synchronized swimmer maintains perfect coordination through changing formations. Continue strengthening your strong alignment and adaptation while developing your agility and agency to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The season trainer excels at cyclical planning and would benefit from quicker adaptation to new skills", tip: "When your team adopts new technology, learn basics within the first week instead of waiting for formal training" },
-            Agency: { description: "The season trainer excels at managing seasonal demands and can develop stronger long-term career vision", tip: "Create a 5-year career vision with specific role targets, not just responding to organizational needs" },
-            Alignment: { description: "The season trainer excels at strategic timing and can enhance systematic impact tracking", tip: "Create a quarterly impact dashboard showing how your seasonal work patterns enhance organizational goals" },
-            Adaptability: { description: "The season trainer excels at life-work integration and would benefit from maintaining strategic consistency", tip: "Design a seasonal effectiveness plan that maintains strategic input across different life intensities" }
+            Agility: { description: "You can develop faster independent learning and skill experimentation", tip: "When new systems are introduced, experiment with learning them independently rather than waiting for team guidance" },
+            Agency: { description: "You can develop stronger individual career direction and ownership", tip: "Create a 3-year career vision with specific role targets, beyond current team responsibilities" },
+            Alignment: { description: "While you excel at team synchronization and coordination, you can continue to enhance your strategic impact", tip: "Map how your collaborative strengths directly contribute to team and organizational outcomes" },
+            Adaptability: { description: "While you excel at matching team rhythms and cycles, you can continue to refine your work-life integration", tip: "Create regular check-ins to assess and adjust your energy levels across different life phases" }
         }
     },
     "High-High-High-Low": {
         title: "The Triathlete",
-        description: "Like a skilled triathlete who excels in multiple disciplines, you are a versatile high performer who combines rapid learning ability, strategic mindset, and self-directed career management. Your strength lies in high performance across multiple areas while maintaining sustainable pacing for long-term organizational impact.",
+        description: "Like a skilled triathlete who excels in multiple disciplines, you are a versatile high performer who combines rapid learning ability, strategic mindset, and self-directed career management. Your strength lies in high performance across multiple areas, while maintaining sustainable pacing for long-term organizational impact. Continue strengthening your strong agility, agency and alignment while developing your adaptation to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The triathlete excels at mastering multiple disciplines and would benefit from more structured learning progression", tip: "Challenge yourself with cross-functional projects that combine technical and strategic elements" },
-            Agency: { description: "The triathlete excels at multi-domain performance and can develop more focused career direction", tip: "Design roles that combine your technical expertise with strategic leadership" },
-            Alignment: { description: "The triathlete excels at performance optimization and can strengthen organizational alignment", tip: "Map your skill development to organizational priorities" },
-            Adaptability: { description: "The triathlete excels at sustained high performance and would benefit from strategic recovery planning", tip: "Create sustainable rhythms that prevent burnout while maintaining high performance" }
+            Agility: { description: "While you excel at mastering multiple disciplines, you can continue to build structured learning progression", tip: "Challenge yourself with cross-functional projects that combine different skill areas" },
+            Agency: { description: "While you excel at multi-domain performance, you can continue to shape your career direction", tip: "Reshape your role by identifying opportunities that match your strengths and interests" },
+            Alignment: { description: "While you excel at performance optimization, you can continue to strengthen organizational alignment", tip: "Map your skill development to organizational priorities" },
+            Adaptability: { description: "You can develop better strategic recovery planning", tip: "Balance periods of intense work with proper rest to maintain performance" }
         }
     },
     "High-High-Low-High": {
         title: "The Surfer",
-        description: "Like a seasoned surfer who reads ocean patterns, you excel at navigating career uncertainties while maintaining your rhythm through different seasons. Just as a surfer knows when to charge waves and when to wait, you combine opportunistic agility with strategic patience to create career momentum.",
+        description: "Like a seasoned surfer who reads ocean patterns, you excel at navigating career uncertainties while maintaining your rhythm through different seasons. Just as a surfer knows when to charge waves and when to wait, you combine opportunistic agility with strategic patience to create career momentum. Continue strengthening your strong agility, agency and adaptation while developing your alignment to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The surfer excels at riding dynamic changes and would benefit from more structured experimentation", tip: "Experiment with new skills through short-term projects while documenting your learning patterns for optimization" },
-            Agency: { description: "The surfer excels at reading conditions independently and can develop stronger network connections", tip: "Build strategic networks that open up more career possibilities while maintaining your pioneering spirit" },
-            Alignment: { description: "The surfer excels at adapting to changing environments and can strengthen organizational alignment", tip: "Create quarterly check-ins with mentors who can help link your contributions to strategic outcomes" },
-            Adaptability: { description: "The surfer excels at catching momentum and would benefit from better consolidation periods", tip: "Balance your appetite for learning with deliberate periods of skill consolidation and reflection" }
+            Agility: { description: "While you excel at riding dynamic changes, you can continue to participate in structured experimentation", tip: "Experiment with new skills through short-term projects while documenting your learning patterns for optimization" },
+            Agency: { description: "While you excel at reading conditions independently, you can continue to develop network connections", tip: "Build strategic networks that open up more career possibilities while maintaining your pioneering spirit" },
+            Alignment: { description: "You can develop stronger organizational alignment", tip: "Create quarterly check-ins with mentors who can help link your contributions to strategic outcomes" },
+            Adaptability: { description: "While you excel at catching momentum, you can continue to refine your consolidation periods", tip: "Balance your appetite for learning with deliberate periods of skill consolidation and reflection" }
         }
     },
     "High-Low-High-High": {
         title: "The Gymnast",
-        description: "Like an elite gymnast mastering multiple apparatus and routines, you excel at adapting strategies while meeting precise technical requirements. You naturally balance agile execution with strategic recovery across different life seasons.",
+        description: "Like an elite gymnast mastering multiple apparatus and routines, you excel at adapting strategies while meeting precise technical requirements. You naturally balance agile execution with strategic recovery across different life seasons. Continue strengthening your strong agility, alignment and adaptation while developing your agency to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The gymnast excels at precise execution and would benefit from more strategic skill planning", tip: "Master new collaboration tools during your team's digital transformation phase, creating deliberate learning sprints" },
-            Agency: { description: "The gymnast excels at technical mastery and can develop stronger career path ownership", tip: "Create a personal development plan beyond your current organizational role, designing intentional career moves" },
-            Alignment: { description: "The gymnast excels at meeting technical requirements and can enhance systematic impact tracking", tip: "Align intensive project phases with the organization's quarterly priorities, measuring both short-term and long-term value" },
-            Adaptability: { description: "The gymnast excels at performance consistency and would benefit from structured impact planning", tip: "Lead strategic initiatives during high-energy seasons while maintaining advisory roles during family-focused periods" }
+            Agility: { description: "The gymnast excels at precise execution and would benefit from more strategic skill planning", tip: "Try out one new collaboration tool regularly to build your digital skills" },
+            Agency: { description: "The gymnast excels at technical mastery and can develop stronger career path ownership", tip: "Create personal development plan beyond current organizational role, designing intentional career moves" },
+            Alignment: { description: "The gymnast excels at meeting technical requirements and can enhance systematic impact tracking", tip: "Align your projects with organizational priorities to drive both team and organizational growth" },
+            Adaptability: { description: "The gymnast excels at performance consistency and would benefit from structured impact planning", tip: "Adjust your work involvement to match your energy levels across different life phases" }
         }
     },
     "Low-High-High-High": {
         title: "The F1 Driver",
-        description: "Like an F1 driver who masters racing and team strategy, you excel at directing your path while aligning personal goals with organizational objectives. Just as a driver knows when to accelerate and when to conserve, you strategically choose when to pursue opportunities and when to maintain sustainable momentum at different life stages.",
+        description: "Like an F1 driver who masters racing and team strategy, you excel at directing your path while aligning personal goals with organizational objectives. Just as a driver knows when to accelerate and when to conserve, strategically choosing when to accelerate opportunities and when to maintain sustainable momentum at different life stages. Continue strengthening your strong agency, alignment and adaptation while developing your agility to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The F1 driver excels at quick decision-making and would benefit from developing systematic learning patterns", tip: "Break down unfamiliar assignments into small learning sprints, deliberately seeking projects outside your comfort zone" },
-            Agency: { description: "The F1 driver excels at navigating high-stakes situations and can develop a broader experience portfolio", tip: "Build a diverse portfolio of experiences while proactively seeking stakeholder feedback to refine your career direction" },
-            Alignment: { description: "The F1 driver excels at team coordination and can enhance systematic development planning", tip: "Design development opportunities by identifying emerging organizational needs that align with your interests" },
-            Adaptability: { description: "The F1 driver excels at peak performance management and would benefit from structured recovery periods", tip: "Structure your year with clear growth and recovery periods, building support systems that help maintain sustainable performance across different life phases" }
+            Agility: { description: "You can develop more systematic learning patterns", tip: "Break down unfamiliar assignments into small learning sprints, deliberately seeking projects outside your comfort zone" },
+            Agency: { description: "While you excel at navigating high-stakes situations, you can continue to build your experience portfolio", tip: "Build a diverse portfolio of experiences while proactively seeking stakeholder feedback to refine your career direction" },
+            Alignment: { description: "While you excel at team coordination, you can continue to enhance development planning", tip: "Design development opportunities by identifying emerging organizational needs that align with your interests" },
+            Adaptability: { description: "While you excel at peak performance management, you can continue to refine your recovery periods", tip: "Structure your year with clear growth and recovery periods, building support systems that help maintain sustainable performance across different life phases" }
         }
     },
     "High-High-High-High": {
         title: "The Olympian",
-        description: "Like an Olympic champion who excels across all aspects of performance—mastering new techniques, directing their training, aligning with team goals, and maintaining career longevity—you demonstrate mastery in all career fitness dimensions.",
+        description: "Like an Olympic champion who excels across all aspects of performance - mastering new techniques, directing their training, aligning with team goals, and maintaining career longevity - you demonstrate mastery in all career fitness dimensions.  Continue developing your agility, agency, alignment and adaptation to enhance your career fitness! Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The Olympian excels at peak performance mastery and would benefit from more cross-functional challenges", tip: "Challenge yourself with cross-functional projects that stretch your expertise into new domains" },
-            Agency: { description: "The Olympian excels at disciplined self-direction and can develop a more diverse experience portfolio", tip: "Design stretch assignments that combine your strengths with organizational priorities while seeking diverse stakeholder feedback" },
-            Alignment: { description: "The Olympian excels at achieving excellence standards and can strengthen organizational impact", tip: "Develop expertise in areas where organizational capability gaps intersect with your career aspirations" },
-            Adaptability: { description: "The Olympian excels at sustained high performance and would benefit from strategic recovery planning", tip: "Structure your year with clear growth and recovery periods while building sustainable support systems" }
+            Agility: { description: "While you excel at peak performance mastery, you can continue to take on cross-functional challenges", tip: "Challenge yourself with cross-functional projects that stretch your expertise into new domains" },
+            Agency: { description: "While you excel at disciplined self-direction, you can continue to build a diverse experience portfolio", tip: "Design stretch assignments that combine your strengths with organizational priorities while seeking diverse stakeholder feedback" },
+            Alignment: { description: "While you excel at achieving excellence standards, you can continue to strengthen organizational impact", tip: "Develop expertise in areas where organizational capability gaps intersect with your career aspirations" },
+            Adaptability: { description: "While you excel at sustained high performance, you can continue to refine your recovery planning", tip: "Structure your year with clear growth and recovery periods while building sustainable support systems" }
         }
     },
     "Low-Low-Low-Low": {
         title: "The Rookie Athlete",
-        description: "Like someone just starting their fitness journey, you're at the beginning of developing your career fitness capabilities. This is an exciting time with tremendous potential for growth across all dimensions.",
+        description: "Like someone just starting their fitness journey, you're at the beginning of developing your career fitness capabilities. This is an exciting time with tremendous potential for growth across all dimensions. Strengthen your agility, agency, alignment and adaptation to enhance your career fitness. Remember that all four areas can be strengthened through consistent practice.",
         developmentAreas: {
-            Agility: { description: "The rookie athlete may need to develop foundational learning habits and consistent practice routines", tip: "Break down learning into small, manageable blocks while discovering your preferred learning style" },
-            Agency: { description: "The rookie athlete may need to build basic career ownership skills and goal-setting discipline", tip: "Create a weekly goals checklist while maintaining a simple career journal to track achievements" },
-            Alignment: { description: "The rookie athlete may need to understand team dynamics and organizational fundamentals", tip: "Learn your team's key objectives through regular career conversations with your supervisor" },
-            Adaptability: { description: "The rookie athlete may need to establish consistent work-life patterns and energy management", tip: "Map your energy patterns throughout the day while practicing basic boundary-setting between work and life" }
+            Agility: { description: "You can develop foundational learning habits and consistent practice routines", tip: "Break down learning into small, manageable blocks while discovering your preferred learning style" },
+            Agency: { description: "You can develop basic career ownership skills and goal-setting discipline", tip: "Create a weekly goals checklist while maintaining a simple career journal to track achievements" },
+            Alignment: { description: "You can develop better understanding of team dynamics and organizational fundamentals", tip: "Learn your team's key objectives through regular career conversations with your supervisor" },
+            Adaptability: { description: "You can develop consistent work-life patterns and energy management", tip: "Map your energy patterns throughout the day while practicing basic boundary-setting between work and life" }
         }
     },
     "default": {
