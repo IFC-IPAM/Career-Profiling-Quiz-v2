@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell, TooltipProps } from "recharts";
-import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight, ArrowLeft, Info } from "lucide-react";
+import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight, ArrowLeft, Info, Camera } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -170,6 +170,14 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
         </div>
 
         <Card className="overflow-hidden shadow-lg -mt-8 rounded-t-none w-full">
+          <div className="bg-accent/20 p-4 border-b border-accent/30">
+            <div className="flex items-center justify-center gap-3">
+              <Camera className="h-6 w-6 text-accent" />
+              <p className="font-semibold text-accent-foreground text-center">
+                Take a screenshot of your results to save your profile!
+              </p>
+            </div>
+          </div>
           <CardContent className="p-8 text-center">
             <h2 className="text-3xl font-bold text-primary mb-4 uppercase">
               {results.profile.title}
