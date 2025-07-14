@@ -353,7 +353,7 @@ export default function CareerFitnessQuiz() {
 
           <Card className="border-2 border-primary">
             <CardHeader className="items-center pb-4">
-              <CardTitle>THE FOUR DIMENSIONS</CardTitle>
+              <CardTitle>THE FOUR A'S</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center gap-4">
