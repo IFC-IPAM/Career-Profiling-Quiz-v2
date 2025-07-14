@@ -343,7 +343,7 @@ export default function CareerFitnessQuiz() {
             </CardHeader>
             <CardContent className="text-center px-6">
               <p className="text-foreground/80 text-base">
-                Ready to understand your career development style? Take this quick quiz to uncover your strengths across the 4As - Agility, Agency, Adaptability, and Alignment - and discover strategies that match your unique career profile.
+                Ready to understand your career development style? Take this quick quiz to uncover your strengths across the 4As and discover strategies that match your unique career profile.
               </p>
             </CardContent>
           </Card>
