@@ -332,13 +332,9 @@ export default function CareerFitnessQuiz() {
   if (quizState === 'welcome') {
     return (
       <main className="min-h-screen bg-background flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
-        <div className="w-full max-w-2xl mx-auto space-y-6">
+        <div className="w-full max-w-2xl mx-auto space-y-8">
           <div className="bg-primary text-primary-foreground text-center font-bold text-2xl sm:text-3xl rounded-lg px-8 py-6 shadow-lg">
             CAREER FITNESS PROFILING QUIZ
-          </div>
-
-          <div className="bg-card text-card-foreground text-center rounded-lg border border-primary/30 px-8 py-3 shadow-sm text-foreground/90 text-sm">
-            Discover your unique career strengths and create a personalized development plan
           </div>
 
           <Card className="border-2 border-primary">
