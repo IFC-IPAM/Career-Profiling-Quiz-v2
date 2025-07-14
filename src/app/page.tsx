@@ -170,10 +170,10 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
         </div>
 
         <Card className="overflow-hidden shadow-lg -mt-8 rounded-t-none w-full">
-          <div className="bg-accent/20 p-4 border-b border-accent/30">
+          <div className="bg-primary p-4">
             <div className="flex items-center justify-center gap-3">
-              <Camera className="h-6 w-6 text-accent" />
-              <p className="font-semibold text-accent-foreground text-center">
+              <Camera className="h-6 w-6 text-primary-foreground" />
+              <p className="font-semibold text-primary-foreground text-center">
                 Take a screenshot of your results to save your profile!
               </p>
             </div>
@@ -244,7 +244,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
         {developmentAreas && (
            <div className="space-y-6">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {(Object.keys(developmentAreas) as Trait[]).map((trait) => {
+              {(Object.keys({...developmentAreas}) as Trait[]).map((trait) => {
                 const Icon = traitIcons[trait];
                 return (
                   <Card key={trait} className={cn("overflow-hidden border-t-4", traitColors[trait].border)}>
