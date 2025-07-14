@@ -198,7 +198,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
 
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline text-center">Trait Analysis</CardTitle>
+            <CardTitle className="font-headline text-center">Your 4A's</CardTitle>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="h-[250px] w-full">
