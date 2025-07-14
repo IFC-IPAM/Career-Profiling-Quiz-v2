@@ -354,7 +354,7 @@ export default function CareerFitnessQuiz() {
           <Card className="border-2 border-primary">
             <CardHeader className="items-center pb-4 text-center">
               <CardTitle>THE FOUR A'S</CardTitle>
-              <p className="text-sm text-muted-foreground pt-2">
+              <p className="text-muted-foreground pt-2 text-base">
                 In this quiz, you'll be matched to your profile based on these four traits:
               </p>
             </CardHeader>
