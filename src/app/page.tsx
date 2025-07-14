@@ -134,7 +134,6 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
 
   const handleShare = async () => {
     const shareData = {
-      title: 'Career Fitness Profiling Quiz',
       text: "I just discovered my career fitness profile! Take the quiz to find out yours.",
       url: window.location.origin,
     };
