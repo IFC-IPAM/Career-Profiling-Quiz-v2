@@ -5,7 +5,7 @@ import { useState, type FC, type ElementType, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell } from "recharts";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell, TooltipProps } from "recharts";
 import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight, ArrowLeft, Info } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -97,6 +97,32 @@ const LoadingScreen: FC = () => (
   </div>
 );
 
+const CustomTooltipContent: FC<TooltipProps<number, string>> = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      const data = payload[0];
+      const score = data.value as number;
+      
+      let interpretation = "";
+      if (score < 60) {
+        interpretation = "Requires work";
+      } else if (score < 75) {
+        interpretation = "Getting there...";
+      } else {
+        interpretation = "Excellent!";
+      }
+
+      return (
+        <div className="p-2 bg-background border rounded-md shadow-lg text-sm">
+          <p className="font-bold">{data.payload.name}</p>
+          <p>Score: {score}%</p>
+          <p className="text-muted-foreground italic">{interpretation}</p>
+        </div>
+      );
+    }
+  
+    return null;
+  };
+
 const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, onRetake }) => {
   const [canShare, setCanShare] = useState(false);
 
@@ -179,7 +205,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
               <ResponsiveContainer>
                 <BarChart layout="vertical" data={results.chartData} margin={{ left: 10 }}>
                   <CartesianGrid horizontal={false} />
-                  <XAxis type="number" domain={[0, 100]} tickFormatter={(value) => `${value}%`} />
+                  <XAxis type="number" domain={[0, 100]} ticks={[0, 20, 40, 60, 80, 100]} tickFormatter={(value) => `${value}%`} />
                   <YAxis
                     dataKey="name"
                     type="category"
@@ -189,7 +215,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                   />
                   <ChartTooltip
                     cursor={{ fill: 'hsl(var(--muted))' }}
-                    content={<ChartTooltipContent indicator="dot" />}
+                    content={<CustomTooltipContent />}
                   />
                   <Bar dataKey="score" radius={4}>
                     {results.chartData.map((entry) => (
@@ -200,6 +226,9 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
               </ResponsiveContainer>
             </ChartContainer>
           </CardContent>
+          <CardFooter className="flex-col gap-2 items-center justify-center pt-2">
+            <p className="text-sm text-muted-foreground">Click on the bars to understand your results!</p>
+          </CardFooter>
         </Card>
         
         {results.profile.developmentAreas && (
