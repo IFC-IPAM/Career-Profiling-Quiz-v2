@@ -339,15 +339,12 @@ export default function CareerFitnessQuiz() {
 
           <Card className="border-2 border-primary">
             <CardHeader className="items-center pb-4">
-              <CardTitle>ABOUT THIS ASSESSMENT</CardTitle>
+              <CardTitle>Bring On Your AAAA Game!</CardTitle>
             </CardHeader>
-            <CardContent className="flex justify-center">
-              <ul className="list-disc list-inside space-y-2 text-foreground/80 text-base">
-                <li>16 simple questions across 4 key career dimensions</li>
-                <li>Takes approximately 5-7 minutes to complete</li>
-                <li>Receive personalized insights based on your unique profile</li>
-                <li>Get tailored development strategies to enhance your career fitness</li>
-              </ul>
+            <CardContent className="text-center px-6">
+              <p className="text-foreground/80 text-base">
+                Ready to understand your career development style? Take this quick quiz to uncover your strengths across the 4As - Agility, Agency, Adaptability, and Alignment - and discover strategies that match your unique career profile.
+              </p>
             </CardContent>
           </Card>
 
