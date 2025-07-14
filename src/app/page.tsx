@@ -159,6 +159,9 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
     Adaptability: { text: "text-trait-adaptability", border: "border-t-trait-adaptability", solidBg: "bg-trait-adaptability" },
   };
 
+  const developmentAreas = results.profile.developmentAreas ? { ...results.profile.developmentAreas } : null;
+
+
   return (
     <main className="min-h-screen bg-background flex items-center justify-center p-4 sm:p-6 md:p-8">
       <div className="w-full max-w-4xl mx-auto space-y-8 animate-in fade-in-0 duration-1000">
@@ -231,10 +234,10 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
           </CardFooter>
         </Card>
         
-        {results.profile.developmentAreas && (
+        {developmentAreas && (
            <div className="space-y-6">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {(Object.keys(results.profile.developmentAreas) as Trait[]).map((trait) => {
+              {(Object.keys(developmentAreas) as Trait[]).map((trait) => {
                 const Icon = traitIcons[trait];
                 return (
                   <Card key={trait} className={cn("overflow-hidden border-t-4", traitColors[trait].border)}>
@@ -247,12 +250,12 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                       </div>
                       <p className="text-base text-muted-foreground">{traitDefinitions[trait]}</p>
                       <p className="text-base text-foreground">
-                        {results.profile.developmentAreas![trait].description}
+                        {developmentAreas[trait]!.description}
                       </p>
                       <div className="mt-2 flex items-start gap-4 rounded-lg bg-muted/50 p-4 shadow-sm">
                         <Lightbulb className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
                         <p className="text-sm text-foreground">
-                          {results.profile.developmentAreas![trait].tip}
+                          {developmentAreas[trait]!.tip}
                         </p>
                       </div>
                     </CardContent>
