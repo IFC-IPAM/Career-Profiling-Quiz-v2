@@ -214,22 +214,21 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
           <CardContent>
           <ChartContainer config={chartConfig} className="h-[250px] w-full">
               <ResponsiveContainer>
-                <BarChart data={results.chartData} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-                  <CartesianGrid vertical={false} />
-                  <XAxis
+                 <BarChart data={results.chartData} layout="vertical" margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+                  <CartesianGrid horizontal={false} />
+                  <YAxis
                     dataKey="name"
                     type="category"
                     tickLine={false}
                     axisLine={false}
                     tickMargin={10}
-                    interval={0}
                   />
-                  <YAxis dataKey="score" type="number" domain={[0, 100]} tickFormatter={(value) => `${value}%`} />
+                  <XAxis dataKey="score" type="number" domain={[0, 100]} tickFormatter={(value) => `${value}%`} />
                   <ChartTooltip
                     cursor={{ fill: 'hsl(var(--muted))' }}
                     content={<CustomTooltipContent />}
                   />
-                  <Bar dataKey="score" radius={[4, 4, 0, 0]}>
+                  <Bar dataKey="score" radius={[0, 4, 4, 0]}>
                     {results.chartData.map((entry) => (
                       <Cell key={`cell-${entry.name}`} fill={chartConfig[entry.name as keyof typeof chartConfig].color} />
                     ))}
