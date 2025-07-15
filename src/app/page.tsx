@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell, TooltipProps } from "recharts";
-import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight, ArrowLeft, Info, Camera } from "lucide-react";
+import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight, ArrowLeft, Info, Camera, BookOpen } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -35,6 +35,7 @@ import {
 import { questions, profiles, type Trait, type Profile } from "@/lib/quiz-data";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const formSchema = z.object(
   Object.fromEntries(
@@ -213,19 +214,20 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
           <CardContent>
             <ChartContainer config={chartConfig} className="h-[250px] w-full">
               <ResponsiveContainer>
-                <BarChart data={results.chartData} margin={{ top: 20, right: 20, bottom: 5, left: -10 }}>
-                  <CartesianGrid vertical={false} />
-                  <XAxis
+                <BarChart layout="vertical" data={results.chartData} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
+                  <CartesianGrid horizontal={false} />
+                  <YAxis
+                    type="category"
                     dataKey="name"
                     tickLine={false}
                     axisLine={false}
                   />
-                  <YAxis type="number" domain={[0, 100]} ticks={[0, 20, 40, 60, 80, 100]} tickFormatter={(value) => `${value}%`} />
+                  <XAxis type="number" domain={[0, 100]} ticks={[0, 20, 40, 60, 80, 100]} tickFormatter={(value) => `${value}%`} />
                   <ChartTooltip
                     cursor={{ fill: 'hsl(var(--muted))' }}
                     content={<CustomTooltipContent />}
                   />
-                  <Bar dataKey="score" radius={[4, 4, 0, 0]}>
+                  <Bar dataKey="score" radius={[0, 4, 4, 0]}>
                     {results.chartData.map((entry) => (
                       <Cell key={`cell-${entry.name}`} fill={chartConfig[entry.name as keyof typeof chartConfig].color} />
                     ))}
@@ -271,7 +273,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
           </div>
         )}
 
-        <div className="flex justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
             <Button onClick={onRetake} size="lg">Retake Quiz</Button>
             {canShare && (
               <Button onClick={handleShare} size="lg" variant="outline">
@@ -279,6 +281,12 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                 Share
               </Button>
             )}
+            <Button asChild size="lg" variant="outline">
+              <Link href="https://form.gov.sg/6875a96c884313e105f70298" target="_blank" rel="noopener noreferrer">
+                <BookOpen />
+                More Resources
+              </Link>
+            </Button>
         </div>
       </div>
     </main>
