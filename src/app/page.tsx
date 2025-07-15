@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell, TooltipProps } from "recharts";
-import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight, ArrowLeft, Info, Camera, BookOpen } from "lucide-react";
+import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight, ArrowLeft, Info, Camera, BookOpen, Gift } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -104,9 +104,9 @@ const CustomTooltipContent: FC<TooltipProps<number, string>> = ({ active, payloa
       const score = data.value as number;
       
       let interpretation = "";
-      if (score < 60) {
+      if (score < 40) {
         interpretation = "Requires work";
-      } else if (score < 75) {
+      } else if (score < 80) {
         interpretation = "Getting there...";
       } else {
         interpretation = "Excellent!";
@@ -212,22 +212,21 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
             <CardTitle className="font-headline text-center">Your 4A's</CardTitle>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={chartConfig} className="h-[250px] w-full">
+          <ChartContainer config={chartConfig} className="h-[250px] w-full">
               <ResponsiveContainer>
-                <BarChart layout="vertical" data={results.chartData} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
-                  <CartesianGrid horizontal={false} />
-                  <YAxis
-                    type="category"
+                <BarChart data={results.chartData} margin={{ top: 20, right: 20, bottom: 5, left: 10 }}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis
                     dataKey="name"
                     tickLine={false}
                     axisLine={false}
                   />
-                  <XAxis type="number" domain={[0, 100]} ticks={[0, 20, 40, 60, 80, 100]} tickFormatter={(value) => `${value}%`} />
+                  <YAxis type="number" domain={[0, 100]} ticks={[0, 20, 40, 60, 80, 100]} tickFormatter={(value) => `${value}%`} />
                   <ChartTooltip
                     cursor={{ fill: 'hsl(var(--muted))' }}
                     content={<CustomTooltipContent />}
                   />
-                  <Bar dataKey="score" radius={[0, 4, 4, 0]}>
+                  <Bar dataKey="score" radius={[4, 4, 0, 0]}>
                     {results.chartData.map((entry) => (
                       <Cell key={`cell-${entry.name}`} fill={chartConfig[entry.name as keyof typeof chartConfig].color} />
                     ))}
@@ -272,6 +271,15 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
             </div>
           </div>
         )}
+
+        <div className="bg-primary p-4 rounded-lg">
+            <div className="flex items-center justify-center gap-3">
+              <Gift className="h-6 w-6 text-primary-foreground" />
+              <p className="font-semibold text-primary-foreground text-center">
+                Click on 'More Resources' to get your free report & resource pack!
+              </p>
+            </div>
+        </div>
 
         <div className="flex flex-wrap justify-center gap-4">
             <Button onClick={onRetake} size="lg">Retake Quiz</Button>
