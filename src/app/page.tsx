@@ -214,22 +214,21 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
           <CardContent>
           <ChartContainer config={chartConfig} className="h-[250px] w-full">
               <ResponsiveContainer>
-                <BarChart data={results.chartData} layout="vertical" margin={{ top: 5, right: 20, bottom: 20, left: 60 }}>
-                  <CartesianGrid horizontal={false} />
-                  <YAxis
+                <BarChart data={results.chartData} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis
                     dataKey="name"
                     type="category"
                     tickLine={false}
                     axisLine={false}
                     tickMargin={10}
-                    width={80}
                   />
-                  <XAxis dataKey="score" type="number" domain={[0, 100]} ticks={[0, 20, 40, 60, 80, 100]} tickFormatter={(value) => `${value}%`} />
+                  <YAxis dataKey="score" type="number" domain={[0, 100]} tickFormatter={(value) => `${value}%`} />
                   <ChartTooltip
                     cursor={{ fill: 'hsl(var(--muted))' }}
                     content={<CustomTooltipContent />}
                   />
-                  <Bar dataKey="score" radius={[0, 4, 4, 0]}>
+                  <Bar dataKey="score" radius={[4, 4, 0, 0]}>
                     {results.chartData.map((entry) => (
                       <Cell key={`cell-${entry.name}`} fill={chartConfig[entry.name as keyof typeof chartConfig].color} />
                     ))}
@@ -383,7 +382,7 @@ export default function CareerFitnessQuiz() {
           <Card className="border-2 border-primary">
             <CardHeader className="items-center pb-4 text-center">
               <CardTitle>THE FOUR A'S</CardTitle>
-              <p className="text-foreground pt-2 text-base">
+              <p className="text-foreground/80 pt-2 text-base">
                 In this quiz, you'll be matched to your profile based on these four traits:
               </p>
             </CardHeader>
