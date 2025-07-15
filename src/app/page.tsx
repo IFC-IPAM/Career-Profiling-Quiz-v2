@@ -222,6 +222,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                     tickLine={false}
                     axisLine={false}
                     tickMargin={10}
+                    width={80}
                   />
                   <XAxis dataKey="score" type="number" domain={[0, 100]} tickFormatter={(value) => `${value}%`} />
                   <ChartTooltip
