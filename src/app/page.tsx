@@ -214,19 +214,20 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
           <CardContent>
           <ChartContainer config={chartConfig} className="h-[250px] w-full">
               <ResponsiveContainer>
-                <BarChart data={results.chartData} margin={{ top: 20, right: 20, bottom: 5, left: 10 }}>
-                  <CartesianGrid vertical={false} />
-                  <XAxis
+                <BarChart data={results.chartData} layout="vertical" margin={{ top: 20, right: 20, bottom: 5, left: 10 }}>
+                  <CartesianGrid horizontal={false} />
+                  <YAxis
+                    type="category"
                     dataKey="name"
                     tickLine={false}
                     axisLine={false}
                   />
-                  <YAxis type="number" domain={[0, 100]} ticks={[0, 20, 40, 60, 80, 100]} tickFormatter={(value) => `${value}%`} />
+                  <XAxis type="number" domain={[0, 100]} ticks={[0, 20, 40, 60, 80, 100]} tickFormatter={(value) => `${value}%`} />
                   <ChartTooltip
                     cursor={{ fill: 'hsl(var(--muted))' }}
                     content={<CustomTooltipContent />}
                   />
-                  <Bar dataKey="score" radius={[4, 4, 0, 0]}>
+                  <Bar dataKey="score" layout="vertical" radius={[4, 4, 0, 0]}>
                     {results.chartData.map((entry) => (
                       <Cell key={`cell-${entry.name}`} fill={chartConfig[entry.name as keyof typeof chartConfig].color} />
                     ))}
@@ -243,7 +244,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
         {developmentAreas && (
            <div className="space-y-6">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {(Object.keys({...developmentAreas}) as Trait[]).map((trait) => {
+              {(Object.keys(developmentAreas) as Trait[]).map((trait) => {
                 const Icon = traitIcons[trait];
                 return (
                   <Card key={trait} className={cn("overflow-hidden border-t-4", traitColors[trait].border)}>
@@ -281,20 +282,22 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
             </div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4">
-            <Button onClick={onRetake} size="lg">Retake Quiz</Button>
-            {canShare && (
-              <Button onClick={handleShare} size="lg" variant="outline">
-                <Share2 />
-                Share
+        <div className="w-full">
+          <div className="flex flex-wrap justify-center gap-4">
+              <Button onClick={onRetake} size="lg">Retake Quiz</Button>
+              {canShare && (
+                <Button onClick={handleShare} size="lg" variant="outline">
+                  <Share2 />
+                  Share
+                </Button>
+              )}
+              <Button asChild size="lg" variant="outline">
+                <Link href="https://form.gov.sg/6875a96c884313e105f70298" target="_blank" rel="noopener noreferrer">
+                  <BookOpen />
+                  More Resources
+                </Link>
               </Button>
-            )}
-            <Button asChild size="lg" variant="outline">
-              <Link href="https://form.gov.sg/6875a96c884313e105f70298" target="_blank" rel="noopener noreferrer">
-                <BookOpen />
-                More Resources
-              </Link>
-            </Button>
+          </div>
         </div>
       </div>
     </main>
