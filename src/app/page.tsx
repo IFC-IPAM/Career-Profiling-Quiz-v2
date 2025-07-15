@@ -214,20 +214,22 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
           <CardContent>
           <ChartContainer config={chartConfig} className="h-[250px] w-full">
               <ResponsiveContainer>
-                <BarChart data={results.chartData} layout="vertical" margin={{ top: 20, right: 20, bottom: 5, left: 10 }}>
+                <BarChart data={results.chartData} layout="vertical" margin={{ top: 5, right: 20, bottom: 20, left: 60 }}>
                   <CartesianGrid horizontal={false} />
                   <YAxis
-                    type="category"
                     dataKey="name"
+                    type="category"
                     tickLine={false}
                     axisLine={false}
+                    tickMargin={10}
+                    width={80}
                   />
-                  <XAxis type="number" domain={[0, 100]} ticks={[0, 20, 40, 60, 80, 100]} tickFormatter={(value) => `${value}%`} />
+                  <XAxis dataKey="score" type="number" domain={[0, 100]} ticks={[0, 20, 40, 60, 80, 100]} tickFormatter={(value) => `${value}%`} />
                   <ChartTooltip
                     cursor={{ fill: 'hsl(var(--muted))' }}
                     content={<CustomTooltipContent />}
                   />
-                  <Bar dataKey="score" layout="vertical" radius={[4, 4, 0, 0]}>
+                  <Bar dataKey="score" radius={[0, 4, 4, 0]}>
                     {results.chartData.map((entry) => (
                       <Cell key={`cell-${entry.name}`} fill={chartConfig[entry.name as keyof typeof chartConfig].color} />
                     ))}
@@ -281,24 +283,27 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
               </p>
             </div>
         </div>
-
-        <div className="w-full">
-          <div className="flex flex-wrap justify-center gap-4">
-              <Button onClick={onRetake} size="lg">Retake Quiz</Button>
-              {canShare && (
-                <Button onClick={handleShare} size="lg" variant="outline">
-                  <Share2 />
-                  Share
+        
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex flex-wrap justify-center gap-4">
+                <Button onClick={onRetake} size="lg">Retake Quiz</Button>
+                {canShare && (
+                  <Button onClick={handleShare} size="lg" variant="outline">
+                    <Share2 />
+                    Share
+                  </Button>
+                )}
+                <Button asChild size="lg" variant="outline">
+                  <Link href="https://form.gov.sg/6875a96c884313e105f70298" target="_blank" rel="noopener noreferrer">
+                    <BookOpen />
+                    More Resources
+                  </Link>
                 </Button>
-              )}
-              <Button asChild size="lg" variant="outline">
-                <Link href="https://form.gov.sg/6875a96c884313e105f70298" target="_blank" rel="noopener noreferrer">
-                  <BookOpen />
-                  More Resources
-                </Link>
-              </Button>
-          </div>
-        </div>
+            </div>
+          </CardContent>
+        </Card>
+
       </div>
     </main>
   );
@@ -378,7 +383,7 @@ export default function CareerFitnessQuiz() {
           <Card className="border-2 border-primary">
             <CardHeader className="items-center pb-4 text-center">
               <CardTitle>THE FOUR A'S</CardTitle>
-              <p className="text-foreground/80 pt-2 text-base">
+              <p className="text-foreground pt-2 text-base">
                 In this quiz, you'll be matched to your profile based on these four traits:
               </p>
             </CardHeader>
