@@ -209,7 +209,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
 
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline text-center">Your 4A's</CardTitle>
+            <CardTitle className="font-headline text-center">Overview of your 4A Traits</CardTitle>
           </CardHeader>
           <CardContent>
           <ChartContainer config={chartConfig} className="h-[250px] w-full">
@@ -276,7 +276,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
         )}
         
         <div className="w-full">
-            <Button asChild size="lg" className="w-full font-semibold text-lg py-6">
+            <Button asChild size="lg" className="w-full font-semibold text-lg py-6 whitespace-normal h-auto">
               <Link href="https://form.gov.sg/6875a96c884313e105f70298" target="_blank" rel="noopener noreferrer">
                 <Gift className="mr-2"/>
                 Click here for your free report & resource pack!
