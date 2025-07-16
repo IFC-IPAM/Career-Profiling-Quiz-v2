@@ -222,7 +222,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                     tickLine={false}
                     axisLine={false}
                     tickMargin={10}
-                    width={80}
+                    width={90}
                   />
                   <XAxis dataKey="score" type="number" domain={[0, 100]} tickFormatter={(value) => `${value}%`} />
                   <ChartTooltip
@@ -274,16 +274,16 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
             </div>
           </div>
         )}
-
-        <div className="bg-primary p-4 rounded-lg">
-            <div className="flex items-center justify-center gap-3">
-              <Gift className="h-6 w-6 text-primary-foreground" />
-              <p className="font-semibold text-primary-foreground text-center">
-                Click on 'More Resources' to get your free report & resource pack!
-              </p>
-            </div>
-        </div>
         
+        <div className="w-full">
+            <Button asChild size="lg" className="w-full font-semibold text-lg py-6">
+              <Link href="https://form.gov.sg/6875a96c884313e105f70298" target="_blank" rel="noopener noreferrer">
+                <Gift className="mr-2"/>
+                Click here for your free report & resource pack!
+              </Link>
+            </Button>
+        </div>
+
         <Card>
           <CardContent className="p-6">
             <div className="flex flex-wrap justify-center gap-4">
@@ -297,12 +297,6 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                     Share
                   </Button>
                 )}
-                <Button asChild size="lg" variant="default">
-                  <Link href="https://form.gov.sg/6875a96c884313e105f70298" target="_blank" rel="noopener noreferrer">
-                    <BookOpen />
-                    More Resources
-                  </Link>
-                </Button>
             </div>
           </CardContent>
         </Card>
