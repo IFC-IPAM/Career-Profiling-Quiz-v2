@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Cell, TooltipProps } from "recharts";
-import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight, ArrowLeft, Info, Camera, BookOpen, Gift } from "lucide-react";
+import { Zap, Briefcase, Target, Shuffle, Lightbulb, Share2, ArrowRight, ArrowLeft, Info, Camera, BookOpen, Gift, RefreshCw } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -287,14 +287,17 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
         <Card>
           <CardContent className="p-6">
             <div className="flex flex-wrap justify-center gap-4">
-                <Button onClick={onRetake} size="lg">Retake Quiz</Button>
+                <Button onClick={onRetake} size="lg" variant="outline">
+                  <RefreshCw />
+                  Retake Quiz
+                </Button>
                 {canShare && (
                   <Button onClick={handleShare} size="lg" variant="outline">
                     <Share2 />
                     Share
                   </Button>
                 )}
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="default">
                   <Link href="https://form.gov.sg/6875a96c884313e105f70298" target="_blank" rel="noopener noreferrer">
                     <BookOpen />
                     More Resources
