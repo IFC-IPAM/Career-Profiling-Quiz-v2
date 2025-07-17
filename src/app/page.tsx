@@ -167,18 +167,10 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
       <div className="w-full max-w-4xl mx-auto space-y-8 animate-in fade-in-0 duration-1000">
         
         <div className="block w-full bg-primary text-primary-foreground font-bold text-xl rounded-t-lg px-8 py-3 shadow-md text-center">
-            CAREER PROFILE RESULTS
+            Your Career Fitness Profile
         </div>
 
         <Card className="overflow-hidden shadow-lg -mt-8 rounded-t-none w-full">
-          <div className="bg-primary p-4">
-            <div className="flex items-center justify-center gap-3">
-              <Camera className="h-6 w-6 text-primary-foreground" />
-              <p className="font-semibold text-primary-foreground text-center">
-                Take a screenshot of your results to save your profile!
-              </p>
-            </div>
-          </div>
           <CardContent className="p-8 text-center">
             <h2 className="text-3xl font-bold text-primary mb-4 uppercase">
               {results.profile.title}
