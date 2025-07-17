@@ -276,7 +276,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
         )}
         
         <div className="w-full">
-            <Button asChild size="lg" className="w-full font-semibold text-lg py-6 whitespace-normal h-auto">
+            <Button asChild size="lg" className="w-full font-semibold text-lg py-6 h-auto">
               <Link href="https://form.gov.sg/6875a96c884313e105f70298" target="_blank" rel="noopener noreferrer">
                 <Gift className="mr-2"/>
                 Click here for your free report & resource pack!
@@ -368,7 +368,7 @@ export default function CareerFitnessQuiz() {
 
           <Card className="border-2 border-primary">
             <CardHeader className="items-center pb-4">
-              <CardTitle>Bring On Your AAAA Game!</CardTitle>
+              <CardTitle>Bring on your 'A' Game!</CardTitle>
             </CardHeader>
             <CardContent className="text-center px-6">
               <p className="text-foreground/80 text-base">
