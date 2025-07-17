@@ -271,7 +271,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
             <Button asChild size="lg" className="w-full font-semibold text-lg py-6 h-auto">
               <Link href="https://form.gov.sg/6875a96c884313e105f70298" target="_blank" rel="noopener noreferrer">
                 <Gift className="mr-2"/>
-                Click here for your free report & resource pack!
+                Click here to email yourself this report & receive additional Career Development resources
               </Link>
             </Button>
         </div>
@@ -286,7 +286,7 @@ const QuizResults: FC<{ results: Results; onRetake: () => void }> = ({ results, 
                 {canShare && (
                   <Button onClick={handleShare} size="lg" variant="outline">
                     <Share2 />
-                    Share
+                    Share this Quiz
                   </Button>
                 )}
             </div>
